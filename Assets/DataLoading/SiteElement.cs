@@ -11,9 +11,13 @@ public abstract class SiteElement : MonoBehaviour
     // Variables to keep track of the loading status.
     public bool loaded = false;
     public bool failed = false;
+    public bool active = false;
 
     // Which site this element is part of.
     public Site parentSite;
+
+    //What type of idle animation this element will use
+    public Idle idleAnimation;
 
     // The serializable data (from JSON) associated with this site element.
     protected SerializableSiteElement siteData;
@@ -53,6 +57,9 @@ public abstract class SiteElement : MonoBehaviour
         // Mark the active element as this element.
         SiteManager.activeSiteElement = this;
 
+        // Set active as true
+        active = true;
+
         // Return the coroutine.
         return activeCoroutine;
     }
@@ -69,6 +76,9 @@ public abstract class SiteElement : MonoBehaviour
         {
             SiteManager.activeSiteElement = null;
         }
+
+        // Set active to false
+        active = false;
 
         // Return the deactivation coroutine.
         return deactivateCoroutine;
@@ -201,23 +211,27 @@ public abstract class SiteElement : MonoBehaviour
     {
 
         // Create the full path.
-        string filePath = "/" + SiteManager.pathToDataFolder + "/" + relativeDataPath;
+        string filePath = SiteManager.pathToDataFolder + "/" + relativeDataPath;
 
         // Ensure the file actually exists
         if (!File.Exists(SiteManager.pathToDataFolder + "/" + "config_3.json"))
         {
-            Debug.LogWarning("Could not find config file");
+            Debug.LogWarning("Could not find config file: " + SiteManager.pathToDataFolder + "/" + "config_3.json");
         }
 
         // Ensure the full filepath exists
         if (!File.Exists(filePath))
         {
-            Debug.LogError("Could not find data file at: " + filePath);
+            Debug.LogWarning("Could not find data file at: " + filePath);
         }
 
         // Return the absolute path.
         return filePath;
 
+    }
+
+    public string GetDescription(){
+        return this.siteData.description;
     }
 }
 

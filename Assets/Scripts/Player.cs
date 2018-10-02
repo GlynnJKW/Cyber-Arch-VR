@@ -51,37 +51,31 @@ public class Player : MonoBehaviour {
 
     public void CheckForMove()
     {
-        // Rotates the platform horizontally.
-        if (GamepadInput.Get(horizontalRotationInput))
-        {
-
-            RotatePlayerHorizontally(GamepadInput.GetInputValue(horizontalRotationInput));
-
+        if(GamepadInput.Get(InputOption.RIGHT_STICK_HORIZONTAL)){
+            OnRightHorizontal(GamepadInput.GetInputValue(InputOption.RIGHT_STICK_HORIZONTAL));
         }
-
-        // Rotates the platform vertically.
-        if (GamepadInput.Get(verticalRotationInput))
-        {
-
-            RotatePlayerVertically(GamepadInput.GetInputValue(verticalRotationInput));
-
+        if(GamepadInput.Get(InputOption.RIGHT_STICK_VERTICAL)){
+            OnRightVertical(GamepadInput.GetInputValue(InputOption.RIGHT_STICK_VERTICAL));
         }
-
-        // Moves the platform horizontally.
-        if (GamepadInput.Get(horizontalMovementInput))
-        {
-
-            MovePlayer(GamepadInput.GetInputValue(horizontalMovementInput), transform.right);
-
+        if(GamepadInput.Get(InputOption.LEFT_STICK_HORIZONTAL)){
+            OnLeftHorizontal(GamepadInput.GetInputValue(InputOption.LEFT_STICK_HORIZONTAL));
         }
-
-        // Moves the platform forward.
-        if (GamepadInput.Get(forwardMovementInput))
-        {
-
-            MovePlayer(GamepadInput.GetInputValue(forwardMovementInput), transform.forward);
-
+        if(GamepadInput.Get(InputOption.LEFT_STICK_VERTICAL)){
+            OnLeftVertical(GamepadInput.GetInputValue(InputOption.LEFT_STICK_VERTICAL));
         }
+    }
+
+    public void OnRightHorizontal(float inputAxisValue){
+        RotatePlayerHorizontally(inputAxisValue);
+    }
+    public void OnRightVertical(float inputAxisValue){
+        RotatePlayerVertically(inputAxisValue);
+    }
+    public void OnLeftHorizontal(float inputAxisValue){
+        MovePlayer(inputAxisValue, transform.right);
+    }
+    public void OnLeftVertical(float inputAxisValue){
+        MovePlayer(inputAxisValue, transform.forward);
     }
 
     // Moves the platform in a specified direction, based on an input value.

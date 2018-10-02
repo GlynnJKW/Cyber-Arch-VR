@@ -82,6 +82,21 @@ public class Site : MonoBehaviour
 
         }
        
+       /*
+       if(siteData.points != null && siteData.points.Length > 0){
+            // Create a new object for this data set.
+            GameObject pointsSetObj = CreateElementSetObject(PointsOOCSet.elementString);
+
+            // Add the points set script to that object.
+            PointsOOCSet pointsSet = pointsSetObj.AddComponent<PointsOOCSet>();
+
+            // Initialize the points set, which will initialize all it's points.
+            pointsSet.Initialize(siteData.points, this);
+
+            // Add the points to the list of data sets here.
+            dataSets.Add(pointsSet);
+       }
+        */
         // TODO: More supported data types.
 
     }
@@ -129,5 +144,4 @@ public class SerializableSite
     public SerializableModel[] models;
     public Serializable3DSite[] sites3D;
     public SerializableImage[] images;
-
 }

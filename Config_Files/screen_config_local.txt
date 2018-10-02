@@ -1,0 +1,13 @@
+<GLOBAL>
+    <ViewerPosition x="0" y="0" z="400" />
+</GLOBAL>
+
+<LOCAL host="ucmerced-head.local" >
+
+   <ScreenConfig>
+      <!-- left stack -->
+      <Screen height="1500" h="0" width="1500" p="0.0"   originX="0"  comment="S_A" originY="1200"  r="-90.0" name="3" originZ="400" />
+      
+   </ScreenConfig>
+
+</LOCAL>

@@ -99,6 +99,7 @@ public class Panorama : SiteElement
 
     protected override IEnumerator LoadCoroutine()
     {
+        this.idleAnimation = new SpinningIdle(0.05f);
 
         SerializableCAVECam camData = siteData as SerializableCAVECam;
 
@@ -561,6 +562,7 @@ public class Panorama : SiteElement
 
         StatusText.SetText("Final Stage: Setting cubemap faces:\n1 of 6");
         yield return null;
+        StatusText.SetText("" + frontFace.GetPixels().Length);
         newCubemap.SetPixels(frontFace.GetPixels(), CubemapFace.PositiveZ);
 
         StatusText.SetText("Final Stage: Setting cubemap faces:\n 2 of 6");

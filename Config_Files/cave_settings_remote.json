@@ -1,0 +1,7 @@
+{
+
+  "pathToDataJSONFile": "//lib-staging.ucsd.edu/cavebase-public/unity-data/config_3.json",
+  "runIn3D": true,
+  "loadAllDataOnStart": false
+
+}

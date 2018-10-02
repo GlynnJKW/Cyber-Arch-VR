@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public const string cacheDirectory = "./Cached_Data";
     public const string dataJsonFile = dataDirectory + "/site_data.json";
     public const string pathToCAVESettings = "./Config_Files/cave_settings.json";
-
+    public const string pathToPotreeExecutable = "./PotreeConverter/PotreeConverter.exe";
 
     // Is this running in the cave?
     public static bool isCave = false;
@@ -132,6 +132,7 @@ public class GameManager : MonoBehaviour
         CatalystEarth.Show();
         Logo.Show();
         ControlPanel.SetHomePanel();
+        InfoCanvas.infoText = "";
         // siteManager.StartCoroutine(siteManager.PlacePOIsWhenReady());
 
         Debug.Log("DONE GOING HOME");
@@ -151,6 +152,15 @@ public class GameManager : MonoBehaviour
             Debug.Log("HOME PRESSED");
             // Loads the first scene. Assumed to be the home scene.
             StartCoroutine(GoHome());
+        }
+
+        if(GamepadInput.GetDown(InputOption.X_BUTTON)){
+            if(InfoCanvas.infoText == ""){
+                InfoCanvas.infoText = SiteManager.activeSiteElement.GetDescription();
+            }
+            else{
+                InfoCanvas.infoText = "";
+            }
         }
 
         if (GamepadInput.GetDown(InputOption.A_BUTTON))

@@ -53,10 +53,16 @@ public class CAVECameraRig : MonoBehaviour
             {
 
                 allCameras.Add(Camera.main);
-
             }
 
             return allCameras;
+        }
+    }
+
+    public static Camera containerCamera;
+    public static Camera frustumCamera{
+        get{
+            return containerCamera ? containerCamera : Camera.main;
         }
     }
 
@@ -144,6 +150,22 @@ public class CAVECameraRig : MonoBehaviour
         ScreenConfigLoader screenLoader = GetComponentInChildren<ScreenConfigLoader>();
         screenLoader.LoadScreenConfig();
 
+        // Create a parent for the screen planes.
+        GameObject screenPlanes = new GameObject("Screen Planes");
+        screenPlanes.transform.parent = this.transform;
+        screenPlanes.transform.localPosition = Vector3.zero;
+        screenPlanes.transform.localRotation = Quaternion.identity;
+
+
+        // Set the position of the screen.
+        Vector3 viewerPosition = screenLoader.viewerPosition.vector;
+        float zVal = viewerPosition.z;
+        viewerPosition.z = viewerPosition.y;
+        viewerPosition.y = zVal;
+
+        screenPlanes.transform.position -= viewerPosition;
+
+
         // Get a list of all screens found in the config.
         List<CAVEScreenConfig> screens = screenLoader.screens;
 
@@ -161,11 +183,17 @@ public class CAVECameraRig : MonoBehaviour
         leftEyeCameraParent.transform.localRotation = Quaternion.identity;
         rightEyeCameraParent.transform.localRotation = Quaternion.identity;
         
-        // Create a parent for the screen planes.
-        GameObject screenPlanes = new GameObject("Screen Planes");
-        screenPlanes.transform.parent = this.transform;
-        screenPlanes.transform.localPosition = Vector3.zero;
-        screenPlanes.transform.localRotation = Quaternion.identity;
+
+        GameObject camera = new GameObject("Container Camera");
+        camera.transform.parent = CAVEViewpoint.transform;
+        camera.transform.localPosition = Vector3.zero;
+        camera.transform.localRotation = Quaternion.identity;
+        Camera camComponent = camera.AddComponent<Camera>();
+        containerCamera = camComponent;
+        camComponent.enabled = false;
+        ContainerScreen screen = camera.AddComponent<ContainerScreen>();
+        screen.projectionScreens = new List<GameObject>();
+
 
         // Iterate through all screens found in the config and load them.
         for (int i = 0; i < screens.Count; i++)
@@ -193,10 +221,14 @@ public class CAVECameraRig : MonoBehaviour
 
             newPlane.transform.localPosition = newPos;
 
-            Camera newLeftCam = AddCamera(StereoTargetEyeMask.Left, i, leftEyeCameraParent.transform, newPlane.GetComponentsInChildren<Transform>()[1].gameObject);
+            GameObject targetPlane = newPlane.GetComponentsInChildren<Transform>()[1].gameObject;
+            
+            screen.projectionScreens.Add(targetPlane);
+
+            Camera newLeftCam = AddCamera(StereoTargetEyeMask.Left, i, leftEyeCameraParent.transform, targetPlane);
             newLeftCam.rect = new Rect(0.0f, 0.0f, 0.0f, 0.0f);
 
-            Camera newRightCam = AddCamera(StereoTargetEyeMask.Right, i, rightEyeCameraParent.transform, newPlane.GetComponentsInChildren<Transform>()[1].gameObject);
+            Camera newRightCam = AddCamera(StereoTargetEyeMask.Right, i, rightEyeCameraParent.transform, targetPlane);
 
             // Here we set the camera viewports based on screen rotations. The screens can't actually be "rotated" in Unity since that would rotate the cameras
             //   (Which would result in some upsidedown/sideway images on the cave. Instead we just scale each "screen" plane accordingly and set viewports.
@@ -293,15 +325,6 @@ public class CAVECameraRig : MonoBehaviour
             rightEyeCameras.Add(newRightCam);
 
         }
-
-        // Set the position of the screen.
-        Vector3 viewerPosition = screenLoader.viewerPosition.vector;
-        float zVal = viewerPosition.z;
-        viewerPosition.z = viewerPosition.y;
-        viewerPosition.y = zVal;
-
-        screenPlanes.transform.position -= viewerPosition;
-
     }
 
     // Creates a new CAVE camera to render to a specific screen.

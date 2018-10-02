@@ -400,6 +400,7 @@ public class Model : SiteElement
 public class SerializableModel : SerializableSiteElement
 {
     public string filePath;
+    public string customData;
 }
 
 

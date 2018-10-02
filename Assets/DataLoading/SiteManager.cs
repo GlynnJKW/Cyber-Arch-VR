@@ -16,7 +16,12 @@ public class SiteManager : MonoBehaviour {
         get
         {
             string dataJSONFilePath = GameManager.instance.caveSettings.pathToDataJSONFile;
-            return Path.GetDirectoryName(dataJSONFilePath);
+            if(dataJSONFilePath.IndexOf("//") != -1){
+                return "/" + Path.GetDirectoryName(dataJSONFilePath);
+            }
+            else{
+                return Path.GetDirectoryName(dataJSONFilePath);
+            }
         }
     }
 

@@ -15,7 +15,7 @@ public abstract class SiteElementSet : MonoBehaviour
 
     private bool activated = false;
 
-    protected abstract SiteElement AddElementComponent(GameObject elementObject);
+    protected abstract SiteElement AddElementComponent(GameObject elementObject, SerializableSiteElement element);
     protected abstract string GetSetType();
 
     public void Initialize(SerializableSiteElement[] serializableSiteElements, Site parentSite)
@@ -33,7 +33,7 @@ public abstract class SiteElementSet : MonoBehaviour
         {
 
             GameObject newElementObj = CreateElementObject(element.name);
-            SiteElement newElement = AddElementComponent(newElementObj);
+            SiteElement newElement = AddElementComponent(newElementObj, element);
 
             newElement.Initialize(element, parentSite);
 
@@ -122,13 +122,12 @@ public abstract class SiteElementSet : MonoBehaviour
 
         if (IsMultipleElements())
         {
-
             if (activeElement != null)
             {
                 yield return activeElement.Deactivate();
                 activeElement = null;
             }
-
+            
             activeElementIndex += direction;
 
             if (activeElementIndex >= siteElements.Count)
@@ -147,8 +146,8 @@ public abstract class SiteElementSet : MonoBehaviour
         {
             activeElement = siteElements[0];
         }
-
-        yield return activeElement.Activate();
+        if(!activeElement.active)
+            yield return activeElement.Activate();
         SiteManager.activeSiteElementSet = this;
 
     }

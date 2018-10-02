@@ -7,7 +7,7 @@ public class ImageSet : SiteElementSet
 
     public const string elementString = "Pictures";
 
-    protected override SiteElement AddElementComponent(GameObject elementObject)
+    protected override SiteElement AddElementComponent(GameObject elementObject, SerializableSiteElement element)
     {
         Picture newElement = elementObject.AddComponent<Picture>();
         return newElement;

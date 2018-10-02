@@ -85,7 +85,6 @@ MonoBehaviour:
   enableRaycast: 1
   screenPrefab: {fileID: 1821125858337614, guid: cf9fe93b0e3d5c7489c799ac1e3c4e23,
     type: 2}
-  using3D: 1
   cameraEyeOffset: 0.6
   CAVEViewpoint: {fileID: 0}
 --- !u!114 &114796544249364338
