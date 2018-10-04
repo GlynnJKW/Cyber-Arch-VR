@@ -428,22 +428,23 @@ public class SiteManager : MonoBehaviour {
             while (elapsedTime < GameManager.instance.secondsPerIdleScene && ShouldIdle())
             {
 
-                // If this is a panorama, just rotate the camera around and look at the whole 360 photo.
-                if (currentElement is Panorama)
-                {
-                    // Speed of rotation.
-                    float camRotationSpeed = 0.05f;
+                // // If this is a panorama, just rotate the camera around and look at the whole 360 photo.
+                // if (currentElement is Panorama)
+                // {
+                //     // Speed of rotation.
+                //     float camRotationSpeed = 0.05f;
 
-                    // Actually rotate the player.
-                    Player.instance.transform.Rotate(Vector3.up, camRotationSpeed);
+                //     // Actually rotate the player.
+                //     Player.instance.transform.Rotate(Vector3.up, camRotationSpeed);
                    
-                }
+                // }
 
-                // If this element is a model.
-                else if (currentElement is Model)
-                {
-                    // TODO: Add functionality for idling with models.
-                }
+                // // If this element is a model.
+                // else if (currentElement is Model)
+                // {
+                //     // TODO: Add functionality for idling with models.
+                // }
+                currentElement.idleAnimation.Tick();
 
                 // Wait a frame, then increase the elapsed time and loop again.
                 yield return null;

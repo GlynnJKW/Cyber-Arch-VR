@@ -70,6 +70,9 @@ public class PointsOOC : SiteElement {
         CustomData test = JsonUtility.FromJson<CustomData>(pointsData.customData);
         Debug.Log(test.spline);
 
+        //idleAnimation = new SplineIdle(test.spline);
+        idleAnimation = new SpinningIdle(0.2f);
+
         string cacheDirectory = GetCacheDirectory(pointsData.filePath);
         if(!Directory.Exists(cacheDirectory)){
             yield return StartCoroutine(ProcessPLY(GetAbsolutePath(pointsData.filePath), cacheDirectory));
@@ -118,5 +121,9 @@ public class PointsOOC : SiteElement {
 
 public class CustomData{
     public string modelType;
-    public JSONSpline spline;
+    public Test1[] spline;
+}
+
+public class Test1{
+    public float x;
 }

@@ -80,6 +80,9 @@ public abstract class SiteElement : MonoBehaviour
         // Set active to false
         active = false;
 
+        //Reset idle animation
+        idleAnimation.Reset();
+
         // Return the deactivation coroutine.
         return deactivateCoroutine;
     }
