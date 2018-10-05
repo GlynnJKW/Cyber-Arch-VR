@@ -425,7 +425,8 @@ public class SiteManager : MonoBehaviour {
             Quaternion originalPlayerRotation = Player.instance.transform.rotation;
 
             // While the idle time is less than idle duration we want, and the system should still be idling.
-            while (elapsedTime < GameManager.instance.secondsPerIdleScene && ShouldIdle())
+            // If there is only one loaded element, don't try to switch between elements (prevents jumping around)
+            while ((elapsedTime < GameManager.instance.secondsPerIdleScene || loadedElements.Count == 1) && ShouldIdle())
             {
 
                 // // If this is a panorama, just rotate the camera around and look at the whole 360 photo.

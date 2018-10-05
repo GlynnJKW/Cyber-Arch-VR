@@ -68,10 +68,10 @@ public class PointsOOC : SiteElement {
     {
         SerializableModel pointsData = siteData as SerializableModel;
         CustomData test = JsonUtility.FromJson<CustomData>(pointsData.customData);
-        Debug.Log(test.spline);
+        Debug.Log(test.splines);
 
-        //idleAnimation = new SplineIdle(test.spline);
-        idleAnimation = new SpinningIdle(0.2f);
+        idleAnimation = new SplineIdle(test.splines);
+        //idleAnimation = new SpinningIdle(0.2f);
 
         string cacheDirectory = GetCacheDirectory(pointsData.filePath);
         if(!Directory.Exists(cacheDirectory)){
@@ -119,11 +119,8 @@ public class PointsOOC : SiteElement {
     }
 }
 
+[System.Serializable]
 public class CustomData{
     public string modelType;
-    public Test1[] spline;
-}
-
-public class Test1{
-    public float x;
+    public JSONSplineElement[] splines;
 }

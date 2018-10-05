@@ -115,7 +115,7 @@ public class Spline
 
 	int mCurrentIdx = 1;
 
-	public SplineNode GetTransformAtTime(float time)
+	public SplineNode GetTransformAtTime(ref float time)
 	{
         SplineNode curr = new SplineNode(Vector3.zero, Quaternion.identity, 0, Vector2.zero);
 		if (mState == "Reset" || mState == "Stopped" || mNodes.Count < 4)
@@ -148,6 +148,7 @@ public class Spline
 				else
 				{
 					mCurrentIdx = 1;
+					time = 0;
 				}
 			}
 		}

@@ -4,7 +4,7 @@ using UnityEngine;
 using System.IO;
 
 public class SplineIdle : Idle{
-    private float step;
+    private float step = 1.0f;
     private float timeElapsed;
 
     private Spline spline;
@@ -16,8 +16,8 @@ public class SplineIdle : Idle{
         for(int i = 0; i < jsonSpline.Length; ++i){
             JSONSplineElement element = jsonSpline[i];
             spline.AddPoint(
-                new Vector3(element.position.x, element.position.y, element.position.z), 
-                Quaternion.Euler(element.eulerAngles.x, element.eulerAngles.y, element.eulerAngles.z),
+                element.position, 
+                Quaternion.Euler(element.eulerAngles),
                 step * i,
                 new Vector2(0,1)
             );
@@ -28,24 +28,19 @@ public class SplineIdle : Idle{
     public override void Tick(){
         // Actually rotate the player.
         timeElapsed += Time.deltaTime;
-        SplineNode curr = spline.GetTransformAtTime(timeElapsed);
+        SplineNode curr = spline.GetTransformAtTime(ref timeElapsed);
         Player.instance.transform.position = curr.Point;
         Player.instance.transform.rotation = curr.Rot;
     }
 
     public override void Reset(){
         // Reset time passed to 0
-        timeElapsed = 0;
+        //timeElapsed = 0;
     }
 }
 
+[System.Serializable]
 public class JSONSplineElement{
-    public JSONVector3 position;
-    public JSONVector3 eulerAngles;
-}
-
-public class JSONVector3{
-    public float x;
-    public float y;
-    public float z;
+    public Vector3 position;
+    public Vector3 eulerAngles;
 }
