@@ -4,17 +4,17 @@ using UnityEngine;
 using System.IO;
 
 public class SplineIdle : Idle{
-    private float step = 1.0f;
+    private float step = 4.0f;
     private float timeElapsed;
 
     private Spline spline;
 
-    public SplineIdle(JSONSplineElement[] jsonSpline){
+    public SplineIdle(JSONTransform[] jsonSpline){
         timeElapsed = 0;
         spline = new Spline();
         Debug.Log(jsonSpline);
         for(int i = 0; i < jsonSpline.Length; ++i){
-            JSONSplineElement element = jsonSpline[i];
+            JSONTransform element = jsonSpline[i];
             spline.AddPoint(
                 element.position, 
                 Quaternion.Euler(element.eulerAngles),
@@ -40,7 +40,7 @@ public class SplineIdle : Idle{
 }
 
 [System.Serializable]
-public class JSONSplineElement{
+public class JSONTransform{
     public Vector3 position;
     public Vector3 eulerAngles;
 }

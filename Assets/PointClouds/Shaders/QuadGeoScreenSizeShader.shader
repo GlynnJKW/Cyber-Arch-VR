@@ -9,6 +9,7 @@ Shader "Custom/QuadGeoScreenSizeShader"
 	*/
 	Properties{
 		_PointSize("Point Size", Float) = 5
+		_Shading("Shading Strength", Range(0, 1)) = 0.25
 		_ScreenWidth("Screen Width", Int) = 0
 		_ScreenHeight("Screen Height", Int) = 0
 		[Toggle] _Circles("Circles", Int) = 0
@@ -46,6 +47,7 @@ Shader "Custom/QuadGeoScreenSizeShader"
 				};
 
 				float _PointSize;
+				float _Shading;
 				int _ScreenWidth;
 				int _ScreenHeight;
 				int _Circles;
@@ -59,11 +61,12 @@ Shader "Custom/QuadGeoScreenSizeShader"
 
 				[maxvertexcount(4)]
 				void geom(point VertexMiddle input[1], inout TriangleStream<VertexOutput> outputStream) {
-					//float zfactor = sqrt(input[0].position.z);
+					float zfactor = input[0].position.z/input[0].position.w * 10 + 0.8;
 					float xsize = _PointSize / (_ScreenWidth);
+					xsize *= zfactor;
 					float ysize = _PointSize / (_ScreenHeight);
+					ysize *= zfactor;
 					VertexOutput out1;
-					//input[0].color = float4(zfactor, 1 - zfactor, 0, 1);
 					out1.position = input[0].position;
 					out1.color = input[0].color;
 					out1.uv = float2(-1.0f, 1.0f);
@@ -94,11 +97,12 @@ Shader "Custom/QuadGeoScreenSizeShader"
 				}
 
 				float4 frag(VertexOutput o) : COLOR{
-					if (_Circles >= 0.5 && o.uv.x*o.uv.x + o.uv.y*o.uv.y > 1) {
+					float rad = o.uv.x*o.uv.x + o.uv.y*o.uv.y;
+					if (_Circles >= 0.5 && rad > 1) {
 						discard;
 					}
-				return o.color;
-			}
+					return o.color * (_Shading * pow(1 - rad, 0.5) + (1 - _Shading));
+				}
 
 			ENDCG
 		}

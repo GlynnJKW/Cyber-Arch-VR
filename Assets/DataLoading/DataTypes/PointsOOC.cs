@@ -5,6 +5,7 @@ using System.IO;
 using UnityEngine;
 using Controllers;
 using ObjectCreation;
+using CloudData;
 
 public class PointsOOC : SiteElement {
 
@@ -17,6 +18,7 @@ public class PointsOOC : SiteElement {
         Debug.Log("Activating points");
         //create/activate pointcloudsetrealtimecontroller
         SerializableModel pointsData = siteData as SerializableModel;
+        CustomData custom = JsonUtility.FromJson<CustomData>(pointsData.customData);
 
         Debug.Log("Loading points " + pointsData.name);
 
@@ -29,6 +31,7 @@ public class PointsOOC : SiteElement {
         mesh.interpolation = InterpolationMode.OFF;
         mesh.reloadingPossible = true;
 
+
         Debug.Log("Initializing set");
 
         set = this.gameObject.AddComponent<PointCloudSetRealTimeController>();
@@ -39,6 +42,9 @@ public class PointsOOC : SiteElement {
         set.nodesGOsPerFrame = 30;
         set.meshConfiguration = mesh;
         set.cacheSizeInPoints = 1000000;
+        if(custom.translation != null){
+            set.config = new Vector3d(custom.translation);
+        }
         set.userCamera = CAVECameraRig.frustumCamera;
 
         Debug.Log("Initializing controller");
@@ -67,11 +73,14 @@ public class PointsOOC : SiteElement {
     protected override IEnumerator LoadCoroutine()
     {
         SerializableModel pointsData = siteData as SerializableModel;
-        CustomData test = JsonUtility.FromJson<CustomData>(pointsData.customData);
-        Debug.Log(test.splines);
+        CustomData custom = JsonUtility.FromJson<CustomData>(pointsData.customData);
 
-        idleAnimation = new SplineIdle(test.splines);
-        //idleAnimation = new SpinningIdle(0.2f);
+        if(custom.splines != null){
+            idleAnimation = new SplineIdle(custom.splines);
+        }
+        else{
+            idleAnimation = new SpinningIdle(0.2f);
+        }
 
         string cacheDirectory = GetCacheDirectory(pointsData.filePath);
         if(!Directory.Exists(cacheDirectory)){
@@ -122,5 +131,6 @@ public class PointsOOC : SiteElement {
 [System.Serializable]
 public class CustomData{
     public string modelType;
-    public JSONSplineElement[] splines;
+    public JSONTransform[] splines;
+    public Vector3 translation;
 }

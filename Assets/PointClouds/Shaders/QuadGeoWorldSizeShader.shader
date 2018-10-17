@@ -95,10 +95,11 @@ Shader "Custom/QuadGeoWorldSizeShader"
 			}
 
 			float4 frag(VertexOutput o) : COLOR{
-				if (_Circles >= 0.5 && o.uv.x*o.uv.x + o.uv.y*o.uv.y > 1) {
+				float rad = o.uv.x*o.uv.x + o.uv.y*o.uv.y;
+				if (_Circles >= 0.5 && rad > 1) {
 					discard;
 				}
-				return o.color;
+				return o.color * pow(1 - rad, 0.25);
 			}
 
 			ENDCG

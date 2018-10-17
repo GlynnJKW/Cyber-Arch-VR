@@ -22,6 +22,8 @@ namespace Controllers {
         /// </summary>
         public bool moveCenterToTransformPosition = true;
 
+        public Vector3d config = new Vector3d(0,0,0);
+
         //For origin-moving:
         private bool hasMoved = false;
         private BoundingBox overallBoundingBox = new BoundingBox(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity,
@@ -95,8 +97,8 @@ namespace Controllers {
                 if (!hasMoved) {
                     Debug.Log("hasnt moved");
                     if (!boundingBoxes.ContainsValue(null)) {
-                        Debug.Log("moving now");
-                        Vector3d moving = new Vector3d(transform.position) - overallBoundingBox.Center();
+                        Vector3d moving = new Vector3d(transform.position) - overallBoundingBox.Center() + config;
+                        Debug.Log("moving now: " + moving);
                         foreach (BoundingBox bb in boundingBoxes.Values) {
                             bb.MoveAlong(moving);
                         }
