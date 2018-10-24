@@ -19,6 +19,8 @@ public abstract class SiteElement : MonoBehaviour
     //What type of idle animation this element will use
     public Idle idleAnimation;
 
+    public ElementUI elementUI;
+
     // The serializable data (from JSON) associated with this site element.
     protected SerializableSiteElement siteData;
 
@@ -54,6 +56,11 @@ public abstract class SiteElement : MonoBehaviour
         // Start the activation coroutine (load first if needed)
         Coroutine activeCoroutine = StartCoroutine(LoadThenActivate());
 
+        // Show the element-specific UI
+        if(elementUI != null){
+            elementUI.Create();
+        }
+
         // Mark the active element as this element.
         SiteManager.activeSiteElement = this;
 
@@ -82,6 +89,11 @@ public abstract class SiteElement : MonoBehaviour
 
         //Reset idle animation
         idleAnimation.Reset();
+
+        //Hide the element-specific UI
+        if(elementUI != null){
+            Destroy(elementUI);
+        }
 
         // Return the deactivation coroutine.
         return deactivateCoroutine;
