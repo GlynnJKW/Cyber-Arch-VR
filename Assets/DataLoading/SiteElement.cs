@@ -95,6 +95,8 @@ public abstract class SiteElement : MonoBehaviour
             Destroy(elementUI);
         }
 
+        DeactivateCustomData();
+
         // Return the deactivation coroutine.
         return deactivateCoroutine;
     }
@@ -102,10 +104,32 @@ public abstract class SiteElement : MonoBehaviour
     // Function that starts the WaitForLoad coroutine and returns it.
     public Coroutine Load()
     {
- 
         // Start WaitForLoad() and return it, so it can be waited for.
         return StartCoroutine(WaitForLoad());
 
+    }
+
+    public IEnumerator LoadCustomData(){
+        if(this.siteData.customData != null){
+            CustomData custom = JsonUtility.FromJson<CustomData>(this.siteData.customData);
+            if(custom.splines != null){
+                idleAnimation = new SplineIdle(custom.splines);
+            }
+            if(custom.audio != null && custom.audio.filepath != null){
+                Debug.Log("loading audio from " + custom.audio.filepath);
+                WWW audiowww = new WWW(custom.audio.filepath);
+                while(!audiowww.isDone){
+                    yield return null;
+                }
+                AudioClip clip = audiowww.GetAudioClipCompressed(false);
+                clip.name = "asdf";
+                AudioSource source = this.gameObject.AddComponent<AudioSource>();
+                source.clip = clip;
+                source.loop = custom.audio.loop;
+                source.playOnAwake = false;
+                audiowww.Dispose();
+            }
+        }
     }
 
     // Unloads this object, by starting the Unload coroutine and returning it.
@@ -137,6 +161,8 @@ public abstract class SiteElement : MonoBehaviour
         {
 
             yield return StartCoroutine(LoadCoroutine());
+
+            yield return StartCoroutine(LoadCustomData());
         }
 
         // Otherwise, we just load the scene specified in JSON.
@@ -210,9 +236,31 @@ public abstract class SiteElement : MonoBehaviour
             yield return Load();
         }
 
+        yield return StartCoroutine(ActivateCustomData());
+
         // Activate the element now that it's guaranteed to have loaded.
         yield return StartCoroutine(ActivateCoroutine());
 
+    }
+
+    private IEnumerator ActivateCustomData(){
+        //Check for custom options to do
+        CustomData custom = JsonUtility.FromJson<CustomData>(this.siteData.customData);
+
+        var audiosource = this.gameObject.GetComponent<AudioSource>();
+        if(audiosource != null){
+            Debug.Log("playing audio");
+            audiosource.Play();
+        }
+        yield return null;
+    }
+
+    private void DeactivateCustomData(){
+        var audiosource = this.gameObject.GetComponent<AudioSource>();
+        if(audiosource != null){
+            Debug.Log("stopping audio");
+            audiosource.Stop();
+        }
     }
     
     // Print an incorrect type error.
@@ -261,4 +309,20 @@ public abstract class SerializableSiteElement
     // IF the scene string is present, Unity will just load the scene with the specified name, ignoring all other JSON elements.
     public string sceneName;
 
+    public string customData;
+
+}
+
+[System.Serializable]
+public class CustomData{
+    public string modelType;
+    public JSONTransform[] splines;
+    public Vector3 translation;
+    public JSONAudio audio;
+}
+
+[System.Serializable]
+public class JSONAudio{
+    public string filepath;
+    public bool loop;
 }

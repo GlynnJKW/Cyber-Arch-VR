@@ -73,12 +73,10 @@ public class PointsOOC : SiteElement {
     protected override IEnumerator LoadCoroutine()
     {
         SerializableModel pointsData = siteData as SerializableModel;
-        CustomData custom = JsonUtility.FromJson<CustomData>(pointsData.customData);
+        // CustomData custom = JsonUtility.FromJson<CustomData>(pointsData.customData);
 
-        if(custom.splines != null){
-            idleAnimation = new SplineIdle(custom.splines);
-        }
-        else{
+
+        if(idleAnimation == null){
             idleAnimation = new SpinningIdle(0.2f);
         }
 
@@ -126,11 +124,4 @@ public class PointsOOC : SiteElement {
         }
         yield return null; 
     }
-}
-
-[System.Serializable]
-public class CustomData{
-    public string modelType;
-    public JSONTransform[] splines;
-    public Vector3 translation;
 }

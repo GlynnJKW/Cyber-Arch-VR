@@ -52,18 +52,17 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Awake()
     {
+        if(HandleSingleton()){
+            SetupGameManagers();
 
-        HandleSingleton();
-        SetupGameManagers();
+            string caveSettingsJSON = File.ReadAllText(pathToCAVESettings);
+            caveSettings = JsonUtility.FromJson<CAVESettings>(caveSettingsJSON);
 
-        string caveSettingsJSON = File.ReadAllText(pathToCAVESettings);
-        caveSettings = JsonUtility.FromJson<CAVESettings>(caveSettingsJSON);
-
-        GetComponentInChildren<SiteManager>().LoadSites(caveSettings.pathToDataJSONFile);
-
+            GetComponentInChildren<SiteManager>().LoadSites(caveSettings.pathToDataJSONFile);
+        }
     }
 
-    public void HandleSingleton()
+    public bool HandleSingleton()
     {
 
         if (GameManager.instance == null)
@@ -85,8 +84,9 @@ public class GameManager : MonoBehaviour
         else
         {
             GameObject.DestroyImmediate(this.gameObject);
-            return;
+            return false;
         }
+        return true;
     }
 
     public void SetupGameManagers()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 using System.Threading;
 using System.Drawing;
@@ -99,7 +100,9 @@ public class Panorama : SiteElement
 
     protected override IEnumerator LoadCoroutine()
     {
-        this.idleAnimation = new SpinningIdle(0.05f);
+        if(this.idleAnimation == null){
+            this.idleAnimation = new SpinningIdle(0.05f);
+        }
 
         SerializableCAVECam camData = siteData as SerializableCAVECam;
 
@@ -142,6 +145,34 @@ public class Panorama : SiteElement
             yield return null;
 
         }
+
+        //Janky memory fix, remove and watch your ram skyrocket
+        var wait = new WaitForSeconds(0.01f);
+        string name = SceneManager.GetActiveScene().name;
+        yield return SceneManager.LoadSceneAsync(name);
+        yield return wait;      
+        yield return SceneManager.LoadSceneAsync(name);
+        yield return wait;      
+        yield return SceneManager.LoadSceneAsync(name);
+        yield return wait;      
+        yield return SceneManager.LoadSceneAsync(name);
+        yield return wait;      
+        yield return SceneManager.LoadSceneAsync(name);
+        yield return wait;      
+        yield return SceneManager.LoadSceneAsync(name);
+        yield return wait;      
+        yield return SceneManager.LoadSceneAsync(name);
+        yield return wait;      
+        yield return SceneManager.LoadSceneAsync(name);
+        yield return wait;      
+        yield return SceneManager.LoadSceneAsync(name);
+        yield return wait;      
+        yield return SceneManager.LoadSceneAsync(name);
+        yield return wait;      
+        yield return SceneManager.LoadSceneAsync(name);
+        yield return wait;      
+        yield return SceneManager.LoadSceneAsync(name);
+        yield return wait;      
     }
 
     public IEnumerator LoadAndSaveCubemapMaterials(string path, bool isRightEye)
@@ -188,7 +219,11 @@ public class Panorama : SiteElement
         }
 
         loaded = true;
-
+        for(int i = 0; i < textures.Count; ++i){
+            Destroy(textures[i]);
+        }
+        textures.Clear();
+        textures = null;
     }
 
     protected override IEnumerator UnloadCoroutine()
@@ -326,7 +361,9 @@ public class Panorama : SiteElement
                 yield return null;
 
                 textures.Add(newTex);
-
+                newWWW.Dispose();
+                newWWW = null;
+                System.GC.Collect();
             }
         }
         else
@@ -345,15 +382,23 @@ public class Panorama : SiteElement
     {
 
         List<Image> images = new List<Image>();
+        
 
         yield return StartCoroutine(LoadTifPages(tifPath, images));
 
-        Debug.Log("Loaded Tif Images");
+        StatusText.SetText("Loaded Tif Images");
 
         yield return StartCoroutine(LoadImagesAsTextures(images, textures));
 
         yield return StartCoroutine(CacheTextures(textures, tifPath));
 
+        for(int i = 0; i < images.Count; ++i){
+            images[i].Dispose();
+        }
+        images.Clear();
+        images = null;
+
+        System.GC.Collect();
     }
 
     public static string GetCacheDirectory(string filePath)
@@ -448,6 +493,10 @@ public class Panorama : SiteElement
         }
 
         tifImages.AddRange(loadedTiff.pages);
+
+        loadedTiff = null;
+
+        System.GC.Collect();
        
         yield return null;
 
@@ -469,7 +518,11 @@ public class Panorama : SiteElement
 
                 converter.Convert();
 
+                img = null;
+                newBitmap = null;
+                converter = null;
             }
+            System.GC.Collect();
         }
         catch (Exception e)
         {
@@ -481,10 +534,10 @@ public class Panorama : SiteElement
     public IEnumerator LoadImagesAsTextures(List<Image> images, List<Texture2D> textures)
     {
 
-        for (int i = 0; i < images.Count; i++)
-        {
-            Bitmap testBit = new Bitmap(images[i]);
-        }
+        // for (int i = 0; i < images.Count; i++)
+        // {
+        //     Bitmap testBit = new Bitmap(images[i]);
+        // }
 
 
         int numConverterThreads = 1;
@@ -510,7 +563,7 @@ public class Panorama : SiteElement
 
             Debug.LogFormat("Creating converter that starts at index {0} and ends at index {1}", startIndex, endIndex);
 
-            ThreadPool.QueueUserWorkItem(new WaitCallback(state => LoadImageSubsetAsTextures(images, converters, startIndex, endIndex, numThreadsPerImage)));
+            ThreadPool.QueueUserWorkItem(new WaitCallback(state => LoadImageSubsetAsTextures(images, converters, startIndex, endIndex, numThreadsPerImage)));            
 
         }
 
@@ -544,7 +597,14 @@ public class Panorama : SiteElement
             newTex.SetPixels(pixels);
             textures.Add(newTex);
 
+            pixels = null;
+            converters[i] = null;
+            converter = null;
+            newTex = null;
         }
+
+        converters = null;
+        System.GC.Collect();
     }
 
     public IEnumerator CreateCubemapFromTextures(List<Texture2D> textures, Cubemap newCubemap)
@@ -585,6 +645,12 @@ public class Panorama : SiteElement
         yield return null;
         newCubemap.SetPixels(downFace.GetPixels(), CubemapFace.NegativeY);
 
+        frontFace = null;
+        backFace = null;
+        upFace = null;
+        downFace = null;
+        leftFace = null;
+        rightFace = null;
         yield return null;
     }
 }

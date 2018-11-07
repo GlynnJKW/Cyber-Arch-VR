@@ -309,15 +309,14 @@ public class SiteUI : MonoBehaviour {
     // Clears all data type buttons for a site. Called when user presses "B" to go back to site selection.
     public void ClearElementButtons()
     {
-        foreach (SiteElementButton button in siteElementButtons)
-        {
-
-            GameObject.Destroy(button.gameObject);
-
+        if(siteElementButtons != null){
+            foreach (SiteElementButton button in siteElementButtons)
+            {
+                GameObject.Destroy(button.gameObject);
+            }
+            siteElementButtons.Clear();
         }
 
-        siteElementButtons.Clear();
         selectedElementIndex = -1;
-
     }
 }

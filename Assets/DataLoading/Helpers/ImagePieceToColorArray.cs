@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 using System.IO;
 using System.Drawing;
 using System.Threading;
@@ -25,8 +26,18 @@ public class ImagePieceToColorArray {
         this.endRow = endRow;
     }
 
+    ~ImagePieceToColorArray(){
+        bitmap.Dispose();
+        bitmap = null;
+        finalColorArray = null;
+        Debug.Log("imgpc2clr being destroyed");
+        System.GC.Collect();
+        Debug.Log("imgpc2clr garbage collection done");
+    }
+
     public void Convert()
     {
+        Profiler.BeginThreadProfiling("ImagePieceToColorArray", this.GetHashCode().ToString());
 
         try
         {
@@ -47,14 +58,11 @@ public class ImagePieceToColorArray {
                 {
                     System.Drawing.Color color = bitmap.GetPixel(x, y);
 
-                    UnityEngine.Color newColor = new UnityEngine.Color(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f);
-
                     int colorIndex = (picWidth * (int)arrayPosition.y) + (int)arrayPosition.x;
 
-                    finalColorArray[colorIndex] = newColor;
+                    finalColorArray[colorIndex] = new UnityEngine.Color(color.R / 255.0f, color.G / 255.0f, color.B / 255.0f);;
 
                     arrayPosition.x++;
-
                 }
 
                 arrayPosition.x = 0;
@@ -63,6 +71,7 @@ public class ImagePieceToColorArray {
 
             Debug.Log("Done converting on thread " + Thread.CurrentThread.ManagedThreadId);
 
+
             finished = true;
         }
         catch (Exception e)
@@ -70,7 +79,9 @@ public class ImagePieceToColorArray {
             Debug.LogErrorFormat("Exception on thread {0}: {1}", Thread.CurrentThread.ManagedThreadId, e);
             finished = true;
         }
+        System.GC.Collect();
 
+        Profiler.EndThreadProfiling();
     }
 
     public UnityEngine.Color[] GetFinalArray()

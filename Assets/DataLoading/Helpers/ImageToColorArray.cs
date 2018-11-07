@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 using System.IO;
 using System.Drawing;
 using System.Threading;
@@ -32,9 +33,20 @@ public class ImageToColorArray
 
     }
 
+    ~ImageToColorArray(){
+        finalColorArray = null;
+        converters.Clear();
+        converters = null;
+        bitmap.Dispose();
+        bitmap = null;
+        Debug.Log("img2clr being destroyed");
+        System.GC.Collect();
+        Debug.Log("img2clr garbage collection done");
+    }
+
     public void Convert()
     {
-
+        Profiler.BeginThreadProfiling("ImageToColorArray", this.GetHashCode().ToString());
         try
         {
             Debug.Log("Starting conversion of entire file on thread " + Thread.CurrentThread.ManagedThreadId);
@@ -67,6 +79,7 @@ public class ImageToColorArray
         {
             Debug.LogErrorFormat("Exception on thread {0}: {1}", Thread.CurrentThread.ManagedThreadId, e);
         }
+        Profiler.EndThreadProfiling();
     }
 
     public bool IsFinished()
@@ -111,7 +124,7 @@ public class ImageToColorArray
 
         finalColorArray = colorList.ToArray();
         finished = true;
-     
+        colorList.Clear();
     }
 
     public UnityEngine.Color[] GetFinalArray()
