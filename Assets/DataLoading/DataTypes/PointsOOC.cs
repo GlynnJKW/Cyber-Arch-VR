@@ -11,7 +11,7 @@ public class PointsOOC : SiteElement {
 
     private DynamicLoaderController controller;
     private PointCloudSetRealTimeController set;
-    private GeoQuadMeshConfiguration mesh;
+    private GeoTriMeshConfiguration mesh;
 
     protected override IEnumerator ActivateCoroutine()
     {
@@ -24,7 +24,7 @@ public class PointsOOC : SiteElement {
 
         Debug.Log("Initializing mesh");
 
-        mesh = this.gameObject.AddComponent<GeoQuadMeshConfiguration>();
+        mesh = this.gameObject.AddComponent<GeoTriMeshConfiguration>();
         mesh.pointRadius = 5;
         mesh.renderCircles = true;
         mesh.screenSize = true;
@@ -64,7 +64,7 @@ public class PointsOOC : SiteElement {
         //delete/deactivate pointcloudsetrealtimecontroller
         
         set.Shutdown();
-        Destroy(this.gameObject.GetComponent<GeoQuadMeshConfiguration>());
+        Destroy(this.gameObject.GetComponent<GeoTriMeshConfiguration>());
         Destroy(this.gameObject.GetComponent<PointCloudSetRealTimeController>());
         Destroy(this.gameObject.GetComponent<DynamicLoaderController>());
         yield return null;
