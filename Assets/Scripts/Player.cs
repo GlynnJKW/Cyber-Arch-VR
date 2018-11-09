@@ -134,6 +134,11 @@ public class Player : MonoBehaviour {
 
     }
 
+    public void ChangeTiltAngle(float angle) {
+        this.maxTiltAngle = angle;
+
+    }
+
 }
 
 

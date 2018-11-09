@@ -92,7 +92,7 @@ public abstract class SiteElement : MonoBehaviour
 
         //Hide the element-specific UI
         if(elementUI != null){
-            Destroy(elementUI);
+            elementUI.Cleanup();
         }
 
         DeactivateCustomData();

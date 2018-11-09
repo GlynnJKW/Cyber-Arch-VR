@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ElementUI : MonoBehaviour {
 
-	private bool created;
+    private bool created;
 
 	protected Canvas elementCanvas;
 
@@ -17,16 +17,17 @@ public class ElementUI : MonoBehaviour {
 		created = true;
 		onCreate();		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+
+    public void Cleanup() {
+        onCleanup();
+    }
+
+    // Update is called once per frame
+    void Update () {
 		if(created){
 			onUpdate();
 		}
-	}
-
-	void OnDestroy(){
-		onCleanup();
 	}
 
 	protected virtual void onCreate(){}

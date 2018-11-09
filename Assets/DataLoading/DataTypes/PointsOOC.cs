@@ -15,6 +15,12 @@ public class PointsOOC : SiteElement {
 
     protected override IEnumerator ActivateCoroutine()
     {
+
+        //Change the max tilt angle of the camera
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        Player player = playerObj.GetComponent<Player>();
+        player.ChangeTiltAngle(85.0f);
+
         Debug.Log("Activating points");
         //create/activate pointcloudsetrealtimecontroller
         SerializableModel pointsData = siteData as SerializableModel;
@@ -76,9 +82,9 @@ public class PointsOOC : SiteElement {
         // CustomData custom = JsonUtility.FromJson<CustomData>(pointsData.customData);
 
 
-        if(idleAnimation == null){
-            idleAnimation = new SpinningIdle(0.2f);
-        }
+        //Choose UI type
+        elementUI = new PointOOCElementUI();
+
 
         string cacheDirectory = GetCacheDirectory(pointsData.filePath);
         if(!Directory.Exists(cacheDirectory)){
