@@ -6,7 +6,7 @@
 !/Assets/
 !/ProjectSettings/
 !/Config_Files/
-!/Site_data/
+!/SiteData/
 !.gitignore
 !*.txt
 !*.dll
@@ -26,6 +26,8 @@ Desktop.ini
 *.off.meta
 *.ply
 *.ply.meta
+*.las
+*.las.meta
 *.obj
 *.obj.meta
 *.tif

@@ -99,7 +99,10 @@
         {
             "name": "Tel-Dor",
             "custom": {
-         
+                "audio": {
+                    "filepath": "./SiteData/mario.wav",
+                    "loop": false
+                }            
             }
         }
     ]
