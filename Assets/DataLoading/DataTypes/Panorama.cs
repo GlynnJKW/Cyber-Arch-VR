@@ -620,9 +620,9 @@ public class Panorama : SiteElement
 
         Debug.LogFormat("Setting Cubemap Faces from {0} textures", textures.Count);
 
+
         StatusText.SetText("Final Stage: Setting cubemap faces:\n1 of 6");
         yield return null;
-        StatusText.SetText("" + frontFace.GetPixels().Length);
         newCubemap.SetPixels(frontFace.GetPixels(), CubemapFace.PositiveZ);
 
         StatusText.SetText("Final Stage: Setting cubemap faces:\n 2 of 6");
@@ -644,6 +644,7 @@ public class Panorama : SiteElement
         StatusText.SetText("Final Stage: Setting cubemap faces:\n 6 of 6");
         yield return null;
         newCubemap.SetPixels(downFace.GetPixels(), CubemapFace.NegativeY);
+        
 
         frontFace = null;
         backFace = null;

@@ -178,6 +178,7 @@ public class GameManager : MonoBehaviour
     {
 
         public string pathToDataJSONFile;
+        public string pathToCustomOverrideFile;
         public bool runIn3D = true;
         public bool loadAllDataOnStart = true;
 

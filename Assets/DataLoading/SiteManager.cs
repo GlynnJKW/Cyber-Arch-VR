@@ -29,6 +29,9 @@ public class SiteManager : MonoBehaviour {
     [HideInInspector]
     public List<Site> sites;
 
+    // List of overrides to apply to elements 
+    public SerializableElements customOverrides;
+
     // Prefab for a POI. Must be dragged in.
     public Object poiPrefab;
 
@@ -251,6 +254,17 @@ public class SiteManager : MonoBehaviour {
 
         // Load in the JSON object as a Serializable Sites object.
         SerializableSites siteData = JsonUtility.FromJson<SerializableSites>(jsonString);
+
+        // Load in custom JSON overrides and save
+        if(File.Exists(GameManager.instance.caveSettings.pathToCustomOverrideFile)){
+            jsonString = File.ReadAllText(GameManager.instance.caveSettings.pathToCustomOverrideFile);
+            customOverrides = JsonUtility.FromJson<SerializableElements>(jsonString);
+            Debug.Log("loaded custom overrides");
+            Debug.Log(customOverrides.elements);
+        }
+        else{
+            Debug.LogWarning(GameManager.instance.caveSettings.pathToCustomOverrideFile + " does not exist");
+        }
 
         // If the site data of the JSON isn't null and there are sites that are part of it.
         if (siteData.sites != null && siteData.sites.Length > 0)
@@ -485,6 +499,12 @@ public class SiteManager : MonoBehaviour {
    
     }
 
+}
+
+[System.Serializable]
+public class SerializableElements
+{
+    public SerializableSiteElement[] elements;
 }
 
 

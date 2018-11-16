@@ -110,25 +110,46 @@ public abstract class SiteElement : MonoBehaviour
     }
 
     public IEnumerator LoadCustomData(){
+        //If customdata not defined in json, define.
+        if(this.siteData.custom == null){
+            this.siteData.custom = new CustomData();
+        }
+        CustomData custom = this.siteData.custom;
+
+        //Merge customData string and customdata object, prioritizing previously existing object
         if(this.siteData.customData != null){
-            CustomData custom = JsonUtility.FromJson<CustomData>(this.siteData.customData);
-            if(custom.splines != null){
-                idleAnimation = new SplineIdle(custom.splines);
+            CustomData c = JsonUtility.FromJson<CustomData>(this.siteData.customData);
+            if(custom.audio == null){
+                custom.audio = c.audio;
             }
-            if(custom.audio != null && custom.audio.filepath != null){
-                Debug.Log("loading audio from " + custom.audio.filepath);
-                WWW audiowww = new WWW(custom.audio.filepath);
-                while(!audiowww.isDone){
-                    yield return null;
-                }
-                AudioClip clip = audiowww.GetAudioClipCompressed(false);
-                clip.name = "asdf";
-                AudioSource source = this.gameObject.AddComponent<AudioSource>();
-                source.clip = clip;
-                source.loop = custom.audio.loop;
-                source.playOnAwake = false;
-                audiowww.Dispose();
+            if(custom.modelType == "" || custom.modelType == null){
+                custom.modelType = c.modelType;
             }
+            if(custom.splines == null){
+                custom.splines = c.splines;
+            }
+            if(custom.translation == null){
+                custom.translation = c.translation;
+            }
+        }
+        //If splines object exists, use spline idle instead of default idle
+        if(custom.splines != null){
+            idleAnimation = new SplineIdle(custom.splines);
+        }
+        //If audio object exists, load audio clip and get ready to play it
+        if(custom.audio != null && custom.audio.filepath != null){
+            Debug.Log("loading audio from " + custom.audio.filepath);
+            WWW audiowww = new WWW(custom.audio.filepath);
+            while(!audiowww.isDone){
+                yield return null;
+            }
+            AudioClip clip = audiowww.GetAudioClipCompressed(false);
+            clip.name = "asdf";
+            AudioSource source = this.gameObject.AddComponent<AudioSource>();
+            source.clip = clip;
+            source.loop = custom.audio.loop;
+            source.playOnAwake = false;
+            audiowww.Dispose();
         }
     }
 
@@ -243,10 +264,7 @@ public abstract class SiteElement : MonoBehaviour
 
     }
 
-    private IEnumerator ActivateCustomData(){
-        //Check for custom options to do
-        CustomData custom = JsonUtility.FromJson<CustomData>(this.siteData.customData);
-
+    private IEnumerator ActivateCustomData(){        
         var audiosource = this.gameObject.GetComponent<AudioSource>();
         if(audiosource != null){
             Debug.Log("playing audio");
@@ -299,7 +317,7 @@ public abstract class SiteElement : MonoBehaviour
 }
 
 [System.Serializable]
-public abstract class SerializableSiteElement
+public class SerializableSiteElement
 {
 
     public int id;
@@ -308,6 +326,9 @@ public abstract class SerializableSiteElement
 
     // IF the scene string is present, Unity will just load the scene with the specified name, ignoring all other JSON elements.
     public string sceneName;
+
+    //store 
+    public CustomData custom;
 
     public string customData;
 

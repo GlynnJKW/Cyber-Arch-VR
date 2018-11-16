@@ -35,6 +35,28 @@ public abstract class SiteElementSet : MonoBehaviour
             GameObject newElementObj = CreateElementObject(element.name);
             SiteElement newElement = AddElementComponent(newElementObj, element);
 
+            //ADD LOCAL OVERRIDE HERE
+            if(SiteManager.instance.customOverrides != null){
+                SerializableElements customs = SiteManager.instance.customOverrides;
+                foreach(SerializableSiteElement e in customs.elements){
+                    //If names are equal, override custom properties
+                    if(e.name == element.name){
+                        if(e.custom.audio != null){
+                            element.custom.audio = e.custom.audio;
+                        }
+                        if(e.custom.modelType != null && e.custom.modelType != ""){
+                            element.custom.modelType = e.custom.modelType;
+                        }
+                        if(e.custom.translation != null){
+                            element.custom.translation = e.custom.translation;
+                        }
+                        if(e.custom.splines != null){
+                            element.custom.splines = e.custom.splines;
+                        }
+                    }
+                }
+            }
+
             newElement.Initialize(element, parentSite);
 
             siteElements.Add(newElement);

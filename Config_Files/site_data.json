@@ -1,281 +1,353 @@
 {
   "sites": [
     {
-      "name": "Luxor",
-      "description": "Luxor, Egypt is the home of the royal tombs and the ancient capital of the pharaohs",
-      "latitude": 25.6872,
-      "longitude": 32.6396,
-
+      "CAVEBASE_bgcolor": "blue", 
+      "description": "", 
+      "latitude": "32.82421110161336", 
+      "longitude": "-117.158203125", 
+      "name": "UCSD", 
       "panos": [
         {
-          "id": 5,
-          "name": "LuxorTempleFirstCourtNight",
-		  "description": "This CAVEcam was shot in the Luxor Temple showing the First Court of Ramesses II and the 14th Century Mosque of Abu al-Hagga                                                                                                              g, at night.  See: http://www.calit2.net/newsroom/rss.php?id=1862 and http://en.wikipedia.org/wiki/Luxor_Temple",
-
-		  "cube4096": {
-			"left": "Site_Data/5__LuxorTempleFirstCourtNight__left.tif",
-			"right": "Site_Data/5__LuxorTempleFirstCourtNight__right.tif"
-		  }
-		  
-        },
-        {
-          "id": 7,
-          "name": "LuxorMedinetHabuHypostyle",
-		  "description": "This CAVEcam was shot in the Temple of Ramesses III at Medinet Habu. This is outside of the columns CAVEcam shot and the Royal Treasure Halls.\nSee: http://www.calit2.net/newsroom/rss.php?id=1862\nand http://en.wikipedia.org/wiki/Medinet_Habu_(temple)",
-
-		  "cube4096": {
-			"left": "Site_Data/7__LuxorMedinetHabuHypostyle__left.tif",
-			"right": "Site_Data/7__LuxorMedinetHabuHypostyle__right.tif"
-		  }
-        },
-        {
-
-          "id": 14,
-          "name": "LuxorKarnakObelisks",
-		  "cube4096": {
-			  "left": "Site_Data/14__LuxorKarnakObelisks__left.tif",
-			  "right": "Site_Data/14__LuxorKarnakObelisks__right.tif"
-		  },
-          "description": "Shown in this CAVEcam is a portion of the Temple of Karnak, on the Luxor side of the Nile. The Obelisk of Tuthmosis is prominent and the Obelisk of Hatshepsut is further back. Greg Wickham is seated with temple guards in the shade. See: http://www.calit2.net/newsroom/rss.php?id=1862 and http://en.wikipedia.org/wiki/Karnak"
-        },
-        {
-          "id": 15,
-          "name": "LuxorMedinetHabuColumnsBlueCeiling",
-		  "cube4096": {
-			"left": "Site_Data/15__LuxorMedinetHabuColumnsBlueCeiling__left.tif",
-			"right": "Site_Data/15__LuxorMedinetHabuColumnsBlueCeiling__right.tif"
-		  },
-          "description": "This CAVEcam was shot in the Temple of Ramesses III at Medinet Habu. Of particular interest is the existing colors on the columns and ceilings, and the clear graffiti from 1817 and 1818. The overexposed portions of the image were, of course, due to the bright sunlight, and inspired subsequent taking of multiple exposures to attempt high-dynamic range (HDR) captures of scenes like this. See: http://www.calit2.net/newsroom/rss.php?id=1862 and http://en.wikipedia.org/wiki/Medinet_Habu_(temple)"
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "c128a3c74191469eabd98326eaa8021f", 
+            "right": "4ae7debb01c44c27942337e3250706df"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "3521ddf29cee4fdbba66ce7f2371941c", 
+            "right": "c95a3046c4ac4d199f8db0c45f4cfd36"
+          }, 
+          "description": "The Geisel Library at UCSD and the statue of Dr. Seuss and the Cat in the Hat are shown. See http://en.wikipedia.org/wiki/Geisel_Library\r\n", 
+          "id": 121, 
+          "name": "Dr-Seuss"
         }
       ]
-    },
+    }, 
     {
-      "name": "Mada'in Saleh",
-      "description": "Mada'in Saleh in Saudi Arabia contains tombs carved of sandstone from the 1 st century",
-      "latitude": 26.8040,
-      "longitude": 37.9573,
-
+      "CAVEBASE_bgcolor": "red", 
+      "description": "Panorama collection from Steno, Greece", 
+      "latitude": "39.0742", 
+      "longitude": "21.8243", 
+      "name": "Steno", 
       "panos": [
         {
-          "id": 26,
-          "name": "Madaen-Saleh-Al-Diwan",
-		  "cube4096": {
-			  "left": "Site_Data/26__Madaen-Saleh-Al-Diwan__left.tif",
-			  "right": "Site_Data/26__Madaen-Saleh-Al-Diwan__right.tif"
-		  },
-          "description": "This image shows a large chamber hall (Al-Diwan) carved from the sandstone"
-        },
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "1239744937e7456588d8997bd61a75e0", 
+            "right": "0a79f346373946d9861fef45899ae0ab"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "72a7b2c096844f838efde77f9ba40217", 
+            "right": "bd5d94d468ca47a8ad60a31d3bf1148b"
+          }, 
+          "description": "This CAVEcam shows one of the small bays immediately south of the Steno archaeological site in Greece (located southeast of modern Delphi in the Antikyra Bay). Two bays (eastern and western) are separated by a small peninsula. These images were captured as part of the efforts to reconstruct the ancient climate and landscape of the region (directed by Thomas E. Levy). For more information see http://ccas.ucsd.edu/greece.php. ", 
+          "id": 309, 
+          "name": "Eastern Bay, Steno, Greece"
+        }, 
         {
-          "id": 140,
-          "name": "Madaen-Saleh-AlKhuraymat",
-		  "cube4096": {
-			  "left": "Site_Data/140__Madaen-Saleh-AlKhuraymat__left.tif",
-			  "right": "Site_Data/140__Madaen-Saleh-AlKhuraymat__right.tif"
-		  },
-          "description": "Madain Saleh is the southernmost outpost of the Nabateans; these tombs are from the first century,"
-        }
-      ],
-      "images": [
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "534e629af6f042e3b739836a8a14c1ad", 
+            "right": "fb2219d21630452cab1a9fa81188d954"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "7c5cc2b73f0642d78499d68b6709a869", 
+            "right": "a471ba9ea7784a35959bc3be2e3041b1"
+          }, 
+          "description": "This CAVEcam was captured on the small peninsula between the Eastern and Western bays south of Steno archaeological site located southeast of modern Delphi in the Antikyra Bay in Greece (see eastern and western bay CAVEcams). These images were captured as part of the efforts to reconstruct the ancient climate and landscape of the region; the boat seen in the bay was collecting cores as the main data collection for the project (directed by Thomas E. Levy). For more information see http://ccas.ucsd.edu/greece.php. ", 
+          "id": 310, 
+          "name": "Peninsula, Steno, Greece"
+        }, 
         {
-          "id": 26,
-          "name": "Madaen-Saleh-Al-Diwan",
-          "image": "madaen-saleh.jpg",
-          "description": "This image shows a large chamber hall (Al-Diwan) carved from the sandstone"
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "a5f766b9ea4448d9bb16a364447eac6b", 
+            "right": "9c71b3384e6b46abb7df36082846ffa0"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "2f7053c1713a409d942f17bffb3f544f", 
+            "right": "5a5f81d93f424819b63dd64dba2b23f0"
+          }, 
+          "description": "This CAVEcam was captured from the Steno archaeological site in Greece which sits atop a small hill (located southeast of modern Delphi in the Antikyra Bay). The two bays south of the site are visible - see the Eastern and Western Bay CAVEcams. These images were captured as part of the efforts to reconstruct the ancient climate and landscape of the region (directed by Thomas E. Levy). For more information see http://ccas.ucsd.edu/greece.php. ", 
+          "id": 311, 
+          "name": "Steno, Greece"
+        }, 
+        {
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "6b518cea18f1410e94f7ce09eb496dcc", 
+            "right": "5ac2098b9fd9400485aff7c843640287"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "054880356cc248f290429ffe723f8441", 
+            "right": "0cce05fa1f974f3994c882f380ce9c65"
+          }, 
+          "description": "This CAVEcam shows one of the small bays immediately south of the Steno archaeological site in Greece (located southeast of modern Delphi in the Antikyra Bay). Two bays (eastern and western) are separated by a small peninsula. These images were captured as part of the efforts to reconstruct the ancient climate and landscape of the region; the boat in the bay was collecting cores as the main data collection for the project (directed by Thomas E. Levy). For more information see http://ccas.ucsd.edu/greece.php. ", 
+          "id": 312, 
+          "name": "Western Bay, Steno, Greece"
+        }, 
+        {
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "32137c83f21444fd9e121921d11bcac2", 
+            "right": "5a0a48d802cf49ec9e52d33ca3bd25eb"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "4b0126505be547158aeed437efff2e8d", 
+            "right": "33cb4544839240779a13de16e67c631b"
+          }, 
+          "description": "This CAVEcam shows the excavation area from the 2016 excavations at Kastrouli, Greece directed by Thomas E. Levy (University of California, San Diego), Athanasios Sideris (Thrace Foundation), and Ioannis Liritzis (University of the Aegean). Excavations focused on a previously disturbed tomb likely dating the Late Bronze Age (ca. 1550-1200 BCE). Kastrouli is a Mycenaean site with a circular fortification wall located southeast of modern Delphi in the Desfina plateau. For more information on the site see Liritzis, I. et al. LATE HELLADIC AND LATER REUSE PHASES OF KASTROULI SETTLEMENT (GREECE): PRELIMINARY DATING RESULTS Mediterranean Archaeology and Archaeometry, Vol. 16, No 3, (2016), pp. 245-250.\r\n", 
+          "id": 313, 
+          "name": "Tomb Excavation, Kastrouli, Greece"
         }
       ]
-    },
+    }, 
     {
-      "name": "Ushaiger",
-      "description": "Ushaiger in Saudi Arabia was a major stopping pong for pilgrams from Iraq and Iran and is currently being reconstructed",
-      "latitude": 25.3472,
-      "longitude": 45.1822,
-
+      "CAVEBASE_bgcolor": "blue", 
+      "description": "Panorama taken in Florence, Italy. ", 
+      "latitude": "43.7696", 
+      "longitude": "11.2558", 
+      "name": "Florence", 
       "panos": [
         {
-          "id": 201,
-          "name": "Ushaiger-Courtyard-2",
-		  "cube4096": {
-			  "left": "Site_Data/201__Ushaiger-Courtyard-2__left.tif",
-			  "right": "Site_Data/201__Ushaiger-Courtyard-2__right.tif"
-		  },
-          "description": "Image of reconstruction process"
-        },
-        {
-          "id": 203,
-          "name": "Ushaiger-Ruin",
-		  "cube4096": {
-			  "left": "Site_Data/203__Ushaiger-Ruin__left.tif",
-			  "right": "Site_Data/203__Ushaiger-Ruin__right.tif"
-		  },
-          "description": "This is what many of the buildings in Ushaiger look like before remodeling."
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "6d20a3abb4244293aff25b18eab05331", 
+            "right": "dc83573ed7f844c4a0a58613534391d3"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "c72b4d5680624584ae2b87a2fee04c8e", 
+            "right": "550b9f8e2bf04cc3954ab7249cf204ef"
+          }, 
+          "description": "Standing on the roof of the Santa Maria del Fiore Cathedral in Florence, Italy", 
+          "id": 13, 
+          "name": "Florence-Duomo-3"
         }
       ]
-    },
+    }, 
     {
-      "name": "Mar Saba",
-      "description": "Mar Saba is a Greek Orthodox monastery located in the Judean desert. It dates back to the 5th century A.D",
-      "latitude": 31.7049,
-      "longitude": 35.3313,
-
-      "points": [
-        {
-          "id": 23,
-          "name": "Mar Saba",
-          "file": "mar_saba.ply",
-          "description": "Mar Saba is a Greek Orthodox monastery located in the Judean desert. It dates back to the 5th century A.D"
-        }
-      ],
-	  "models": [
-        {
-          "id": 9,
-          "name": "testmodel",
-          "filePath": "D:/Unity Projects/Cyber-Arch-VR/Assets/ObjReader/Demos/Sample Files/Pig_obj.txt",
-          "description":  "testing a model"
-        }
-      ],
-      "images": [
-        {
-          "id": 23,
-          "name": "picture 1",
-          "file": "image1.jpg",
-          "description": "not need but can include"
-        },
-        {
-          "id": 24,
-          "name": "picture 2",
-          "file": "image2.jpg",
-          "description": "not need but can include"
-        },
-        {
-          "id": 25,
-          "name": "picture 3",
-          "file": "image3.jpg",
-          "description": "not need but can include"
-        },
-        {
-          "id": 26,
-          "name": "picture 3",
-          "file": "image3.jpg",
-          "description": "not need but can include"
-
-        }
-      ]
-    },
-    {
-      "name": "Australia",
-      "description": "This site is a botanical garden pavillion located in Melbourne, Australia",
-      "latitude": -37.830369,
-      "longitude": 144.979606,
-
+      "CAVEBASE_bgcolor": "red", 
+      "description": "This site is a botanical garden pavilion located in Melbourne, Australia", 
+      "latitude": "-37.830369", 
+      "longitude": "144.979606", 
+      "name": "Melbourne", 
       "panos": [
         {
-          "id": 307,
-          "name": "Botanical Garden Pavillion",
-		  "cube4096": {
-			  "left": "Site_Data/307__Botanical_Garden_Pavillion__left.tif",
-			  "right": "Site_Data/307__Botanical_Garden_Pavillion__right.tif"
-		  },
-          "description": "Botanical Garden pavillion in Melbourne, Australia"
-        }
-      ],
-      "images": [
-        {
-          "id": 3,
-          "name": "Baptistery Flythrough",
-          "file": "garden.jpg",
-          "description": "Botanical Garden pavillion in Melbourne, Australia"
-        }
-      ]
-    },
-    {
-      "name": "Italy",
-      "description": "Monumnet in Florence",
-      "latitude": 43.7696,
-      "longitude": 11.2558,
-      "panos": [
-        {
-          "id": 13,
-          "name": "Florence-Duomo-3",
-		  "cube4096": {
-			  "left": "Site_Data/13__Florence-Duomo-3__left.tif",
-			  "right": "Site_Data/13__Florence-Duomo-3__right.tif"
-		  },
-          "description": "Standing on the roof of the Santa Maria del Fiore Cathedral in Florence, Italy"
-        }
-      ],
-      "videos": [
-        {
-          "id": 3,
-          "name": "Baptistery Flythrough",
-          "file": "BapPres_FullRes.mp4",
-          "description": "Explore the oldest monument in Florence, Italy!"
-        },
-        {
-          "id": 2,
-          "name": "Outdoor ritual",
-          "file": "flythrough.mp4",
-          "description": "Flythrough of Arma Veirana cliff in Italy."
-        }
-      ],
-      "points": [
-        {
-          "id": 1,
-          "name": "Arma Veirana Cliff",
-          "file": "sfm_cliff_detail_ultra.ply",
-          "description": "Exterior point cloud of cliff above Arma Veirana cave in Italy."
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "bc9b97d4d797448a8b563a79927da6ea", 
+            "right": "99f61a05729c40ce8a6e4e60a8c55324"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "6c0e01dec79944d59b453f69492b2a37", 
+            "right": "8c3c59f08843413da4e2c78f326a6fc1"
+          }, 
+          "description": "Botanical Garden pavillion in Melbourne, Australia", 
+          "id": 307, 
+          "name": "Botanical_Garden_Pavillion"
         }
       ]
-    },
+    }, 
     {
-      "name": "Greece",
-      "description": "Steno greece pan collection",
-      "latitude": 39.0742,
-      "longitude": 21.8243,
+      "CAVEBASE_bgcolor": "blue", 
+      "description": "Ushaiger in Saudi Arabia was a major stopping pong for pilgrams from Iraq and Iran and is currently being reconstructed", 
+      "latitude": "25.3472", 
+      "longitude": "45.1822", 
+      "name": "Ushaiger", 
       "panos": [
         {
-          "id": 309,
-          "name": "Eastern Bay, Steno, Greece",
-		  "cube4096": {
-			  "left": "Site_Data/309__Eastern_Bay_Steno_Greece__left.tif",
-			  "right": "Site_Data/309__Eastern_Bay_Steno_Greece__right.tif"
-		  },
-          "description": "This CAVEcam shows one of the small bays immediately south of the Steno archaeological site in Greece (located southeast of modern Delphi in the Antikyra Bay). Two bays (eastern and western) are separated by a small peninsula. These images were captured as part of the efforts to reconstruct the ancient climate and landscape of the region (directed by Thomas E. Levy). For more information see http://ccas.ucsd.edu/greece.php."
-        },
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "1c78ca34ec6f441aa14479e16c9e14c4", 
+            "right": "7ab1cb43eb104bf2bfebd14555fdd74c"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "640e711aae6c4ac083458da5c5955f23", 
+            "right": "9572db7223244f009ba6fc14c1499da6"
+          }, 
+          "description": "This is a another shot inside the courtyard of the main mosque of Ushaiger. Ushaiger is one of the oldest towns in the Saudi region of Najd and it was a major stopping point for pilgrims coming from Kuwait, Iraq and Iran to perform Hajj or Umrah. It was mostly abandoned 50 years ago, but is now being reconstructed and people have started to move back in. Also see http://thompsonsinsaudi.blogspot.com/2011/04/ushaiger-village.html Quoting this website: coordinates 25\u00b020\u203233\u2033N 45\u00b011\u20320\u2033E. ... 200 kms each way of easy highway from Riyadh. As part of a training exercise for a group of scientists and engineers from KACST in Riyadh, Tom DeFanti and Andrew Prudomme went with the group to shoot these CAVEcams and also attempt some structure from motion (SfM) image capture. Thanks to Saleh Al-Harti, Mohammed Alfarhan, Azzam Asuhaibani, and Badr Altasan of KACST who got us to this amazing museum, and helped us photograph this reconstructed town.\r\n", 
+          "id": 201, 
+          "name": "Ushaiger-Courtyard-2"
+        }, 
         {
-          "id": 310,
-          "name": "Peninsula, Steno, Greece",
-		  "cube4096": {
-			  "left": "Site_Data/310__Peninsula_Steno_Greece__left.tif",
-			  "right": "Site_Data/310__Peninsula_Steno_Greece__right.tif"
-		  },
-          "description": "This CAVEcam was captured on the small peninsula between the Eastern and Western bays south of Steno archaeological site located southeast of modern Delphi in the Antikyra Bay in Greece (see eastern and western bay CAVEcams). These images were captured as part of the efforts to reconstruct the ancient climate and landscape of the region; the boat seen in the bay was collecting cores as the main data collection for the project (directed by Thomas E. Levy). For more information see http://ccas.ucsd.edu/greece.php."
-        },
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "9640a0fcc4644fd8b523ccd57c8d6bec", 
+            "right": "ccbb2c0d37484625943b64ea4eb3a4ba"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "aec19f02719b42028479f3b6785b5d61", 
+            "right": "92840832801d4006a26233842cd78e7f"
+          }, 
+          "description": "This is what many of the buildings in Ushaiger look like before remodeling.  This image is part of an experiment in high-dynamic range (HDR) photography, never completed (see RuinDark).\r\n\r\nUshaiger is one of the oldest towns in the Saudi region of Najd and it was a major stopping point for pilgrims coming from Kuwait, Iraq and Iran to perform Hajj or Umrah. It was mostly abandoned 50 years ago, but is now being reconstructed and people have started to move back in. Also see http://thompsonsinsaudi.blogspot.com/2011/04/ushaiger-village.html Quoting this website: coordinates 25\u00b020\u203233\u2033N 45\u00b011\u20320\u2033E. ... 200 kms each way of easy highway from Riyadh. As part of a training exercise for a group of scientists and engineers from KACST in Riyadh, Tom DeFanti and Andrew Prudomme went with the group to shoot these CAVEcams and also attempt some structure from motion (SfM) image capture. Thanks to Saleh Al-Harti, Mohammed Alfarhan, Azzam Asuhaibani, and Badr Altasan of KACST who got us to this amazing museum, and helped us photograph this reconstructed town.", 
+          "id": 203, 
+          "name": "Ushaiger-Ruin"
+        }
+      ]
+    }, 
+    {
+      "CAVEBASE_bgcolor": "red", 
+      "description": "Mada'in Saleh in Saudi Arabia contains tombs carved of sandstone from the 1st century", 
+      "latitude": "26.8040", 
+      "longitude": "37.9573", 
+      "name": "Mada'in Saleh", 
+      "panos": [
         {
-          "id": 311,
-          "name": "Steno, Greece",
-		  "cube4096": {
-			  "left": "Site_Data/311__Steno_Greece__left.tif",
-			  "right": "Site_Data/311__Steno_Greece__right.tif"
-		  },
-          "description": "This CAVEcam was captured from the Steno archaeological site in Greece which sits atop a small hill (located southeast of modern Delphi in the Antikyra Bay). The two bays south of the site are visible - see the Eastern and Western Bay CAVEcams. These images were captured as part of the efforts to reconstruct the ancient climate and landscape of the region (directed by Thomas E. Levy). For more information see http://ccas.ucsd.edu/greece.php."
-        },
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "622a9bcf71db40aea27e2c5cd11d7dca", 
+            "right": "2b4a175f047a43f59b090c2cd9cf474d"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "e747ab7832cb45899f14a5a846be1d5c", 
+            "right": "804c80edec4a43c185ea381510478e17"
+          }, 
+          "description": "Madain Saleh is the southernmost outpost of the Nabateans; these tombs are from the first century, CE.  KAUST arranged this CAVEcam expedition as part of a training session conducted by Dick Ainsworth, Tom DeFanti, and Dan Sandin, for KAUST Visualization Lab team members.  This image shows a large chamber hall (Al-Diwan) carved from the sandstone, featuring seats along the walls.  See http://saudi-archaeology.com/gigapan/al-diwan-madain-saleh/ and http://en.wikipedia.org/wiki/Mada'in_Saleh", 
+          "id": 26, 
+          "name": "Madaen-Saleh-Al-Diwan"
+        }, 
         {
-          "id": 312,
-          "name": "Western Bay, Steno, Greece",
-		  "cube4096": {
-			  "left": "Site_Data/312__Western_Bay_Steno_Greece__left.tif",
-			  "right": "Site_Data/312__Western_Bay_Steno_Greece__right.tif"
-		  },
-          "description": "This CAVEcam shows one of the small bays immediately south of the Steno archaeological site in Greece (located southeast of modern Delphi in the Antikyra Bay). Two bays (eastern and western) are separated by a small peninsula. These images were captured as part of the efforts to reconstruct the ancient climate and landscape of the region; the boat in the bay was collecting cores as the main data collection for the project (directed by Thomas E. Levy). For more information see http://ccas.ucsd.edu/greece.php."
-        },
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "10dc529931cf4fa2b3b4abad3b9bbc27", 
+            "right": "f5b459a16b5d432fa59a340468ba3e75"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "4d6589b6a9c3414b8cf89e7c5c39d0f0", 
+            "right": "94779dac2e2642cdaf415b485aa82d36"
+          }, 
+          "description": "Madain Saleh is the southernmost outpost of the Nabateans; these tombs are from the first century, CE.  KAUST arranged this CAVEcam expedition as part of a training session conducted by Dick Ainsworth, Tom DeFanti, and Dan Sandin, for KAUST Visualization Lab team members.  This image shows a group of tombs carved from the sandstone in a cul-de-sac. Note the partially finished tomb, carved from the top down.  \r\nSee http://en.wikipedia.org/wiki/Mada'in_Saleh", 
+          "id": 140, 
+          "name": "Madaen-Saleh-AlKhuraymat"
+        }
+      ]
+    }, 
+    {
+      "CAVEBASE_bgcolor": "blue", 
+      "description": "Luxor, Egypt is the home of the royal tombs and the ancient capital of the pharaoh", 
+      "latitude": "25.6872", 
+      "longitude": "32.6396", 
+      "name": "Luxor", 
+      "panos": [
         {
-          "id": 313,
-          "name": "Tomb Excavation, Kastrouli, Greece",
-		  "cube4096": {
-			  "left": "Site_Data/313__Tomb_Excavation_Kastrouli_Greece__left.tif",
-			  "right": "Site_Data/313__Tomb_Excavation_Kastrouli_Greece__right.tif"
-		  },
-          "description": "This CAVEcam shows the excavation area from the 2016 excavations at Kastrouli, Greece directed by Thomas E. Levy (University of California, San Diego), Athanasios Sideris (Thrace Foundation), and Ioannis Liritzis (University of the Aegean). Excavations focused on a previously disturbed tomb likely dating the Late Bronze Age (ca. 1550-1200 BCE). Kastrouli is a Mycenaean site with a circular fortification wall located southeast of modern Delphi in the Desfina plateau. For more information on the site see Liritzis, I. et al. LATE HELLADIC AND LATER REUSE PHASES OF KASTROULI SETTLEMENT (GREECE): PRELIMINARY DATING RESULTS Mediterranean Archaeology and Archaeometry, Vol. 16, No 3, (2016), pp. 245-250."
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "ea53168b73ec46eb9a95baa5c621b750", 
+            "right": "463baa515b694749ae9edede5b45652d"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "773f24b1d9ed4ad094b94ed96d72e37b", 
+            "right": "80505c010e6341bea6a301df664735cf"
+          }, 
+          "description": "This CAVEcam was shot in the Luxor Temple showing the First Court of Ramesses II and the 14th Century Mosque of Abu al-Haggag, at night.  See: http://www.calit2.net/newsroom/rss.php?id=1862 and http://en.wikipedia.org/wiki/Luxor_Temple", 
+          "id": 5, 
+          "name": "LuxorTempleFirstCourtNight"
+        }, 
+        {
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "b393bb2f57044e6cb96c14c2c3fa49a8", 
+            "right": "c8aab2f4c31d4bba8a454b09914aba85"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "f8b98f0a398741eebdc4f001209d2261", 
+            "right": "99fb7492727546b59b5e51c3dc602747"
+          }, 
+          "description": "This CAVEcam was shot in the Temple of Ramesses III at Medinet Habu. This is outside of the columns CAVEcam shot and the Royal Treasure Halls.\r\nSee: http://www.calit2.net/newsroom/rss.php?id=1862\r\nand http://en.wikipedia.org/wiki/Medinet_Habu_(temple)", 
+          "id": 7, 
+          "name": "LuxorMedinetHabuHypostyle"
+        }, 
+        {
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "d4ff78eb47b84de7aef436e8fa3c6d82", 
+            "right": "3096e01a09bb4bfe90b6d529f3f802a0"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "c7b2e317ef624a6681095d048d065447", 
+            "right": "3153507bb3264d7d888aed54e15166b9"
+          }, 
+          "description": "Shown in this CAVEcam is a portion of the Temple of Karnak, on the Luxor side of the Nile. The Obelisk of Tuthmosis is prominent and the Obelisk of Hatshepsut is further back.  Greg Wickham is seated with temple guards in the shade.  See: http://www.calit2.net/newsroom/rss.php?id=1862\r\nand http://en.wikipedia.org/wiki/Karnak\r\n", 
+          "id": 14, 
+          "name": "LuxorKarnakObelisks"
+        }, 
+        {
+          "CAVEBASE_auto_update": true, 
+          "cube1024": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "06b9c57e66394d8686f64adfb77047d1", 
+            "right": "5de892cca70d4bde98831bbf22e77021"
+          }, 
+          "cube4096": {
+            "CAVEBASE_left_status": "OK", 
+            "CAVEBASE_right_status": "OK", 
+            "left": "063cc152b37d42a0adf8c8efe07199b4", 
+            "right": "8b7056dfa3d94527b8e3736547462732"
+          }, 
+          "description": "This CAVEcam was shot in the Temple of Ramesses III at Medinet Habu. Of particular interest is the existing colors on the columns and ceilings, and the clear graffiti from 1817 and 1818.  The overexposed portions of the image were, of course, due to the bright sunlight, and inspired subsequent taking of multiple exposures to attempt high-dynamic range (HDR) captures of scenes like this.\r\nSee: http://www.calit2.net/newsroom/rss.php?id=1862\r\nand http://en.wikipedia.org/wiki/Medinet_Habu_(temple)", 
+          "id": 15, 
+          "name": "LuxorMedinetHabuColumnsBlueCeiling"
         }
       ]
     }
