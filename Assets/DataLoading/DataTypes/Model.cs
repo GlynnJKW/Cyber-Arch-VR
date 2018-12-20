@@ -53,7 +53,7 @@ public class Model : SiteElement
         Debug.Log("Loading Model");
         yield return null;
 
-        string path = modelData.filePath;
+        string path = modelData.file;
 
         if (!File.Exists(path))
         {
@@ -399,8 +399,7 @@ public class Model : SiteElement
 [System.Serializable]
 public class SerializableModel : SerializableSiteElement
 {
-    public string filePath;
-    public string customData;
+    public string file;
 }
 
 

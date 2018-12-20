@@ -1,6 +1,7 @@
 {
 
   "pathToDataJSONFile": "//lib-staging.ucsd.edu/cavebase-public/unity-data/config_3.json",
+  "pathToCustomOverrideFile": "./Config_Files/overrides.json",
   "runIn3D": true,
   "loadAllDataOnStart": false
 

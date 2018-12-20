@@ -61,7 +61,8 @@ Shader "Custom/TriGeoScreenSizeShader"
 
 				[maxvertexcount(3)]
 				void geom(point VertexMiddle input[1], inout TriangleStream<VertexOutput> outputStream) {
-					float zfactor = input[0].position.z/input[0].position.w * 10 + 0.8;
+					float rt3ovr2 = 1.73205080757f;
+					float zfactor = input[0].position.z/input[0].position.w * 10 + 0.5;
 					float xsize = _PointSize / (_ScreenWidth);
 					xsize *= zfactor;
 					float ysize = _PointSize / (_ScreenHeight);
@@ -70,19 +71,18 @@ Shader "Custom/TriGeoScreenSizeShader"
 					out1.position = input[0].position;
 					out1.color = input[0].color;
 					out1.uv = float2(0.0f, 2.0f);
-					out1.position.x -= out1.position.w * xsize;
-					out1.position.y += out1.position.w * ysize;
+					out1.position.y += 2.0f * out1.position.w * ysize;
 					VertexOutput out2;
 					out2.position = input[0].position;
 					out2.color = input[0].color;
-					out2.uv = float2(1.73205080757f, -1.0f);
-					out2.position.x += out2.position.w * xsize;
-					out2.position.y += out2.position.w * ysize;
+					out2.uv = float2(rt3ovr2, -1.0f);
+					out2.position.x += rt3ovr2 * out2.position.w * xsize;
+					out2.position.y -= out2.position.w * ysize;
 					VertexOutput out3;
 					out3.position = input[0].position;
 					out3.color = input[0].color;
-					out3.uv = float2(-1.73205080757f, -1.0f);
-					out3.position.x += out3.position.w * xsize;
+					out3.uv = float2(-rt3ovr2, -1.0f);
+					out3.position.x -= rt3ovr2 * out3.position.w * xsize;
 					out3.position.y -= out3.position.w * ysize;
 
 					outputStream.Append(out1);

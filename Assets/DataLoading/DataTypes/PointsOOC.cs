@@ -24,7 +24,6 @@ public class PointsOOC : SiteElement {
         Debug.Log("Activating points");
         //create/activate pointcloudsetrealtimecontroller
         SerializableModel pointsData = siteData as SerializableModel;
-        CustomData custom = JsonUtility.FromJson<CustomData>(pointsData.customData);
 
         Debug.Log("Loading points " + pointsData.name);
 
@@ -47,17 +46,14 @@ public class PointsOOC : SiteElement {
         set.nodesLoadedPerFrame = 15;
         set.nodesGOsPerFrame = 30;
         set.meshConfiguration = mesh;
-        set.cacheSizeInPoints = 1000000;
-        if(custom.translation != null){
-            set.config = new Vector3d(custom.translation);
-        }
+        set.cacheSizeInPoints = 3000000;
         set.userCamera = CAVECameraRig.frustumCamera;
 
         Debug.Log("Initializing controller");
 
         //create dynamicloadercontroller
         controller = this.gameObject.AddComponent<DynamicLoaderController>();
-        controller.cloudPath = GetCacheDirectory(pointsData.filePath);
+        controller.cloudPath = GetCacheDirectory(pointsData.file);
         controller.setController = set;
         set.userCamera = CAVECameraRig.frustumCamera;
 
@@ -86,9 +82,9 @@ public class PointsOOC : SiteElement {
         elementUI = new PointOOCElementUI();
 
 
-        string cacheDirectory = GetCacheDirectory(pointsData.filePath);
+        string cacheDirectory = GetCacheDirectory(pointsData.file);
         if(!Directory.Exists(cacheDirectory)){
-            yield return StartCoroutine(ProcessPLY(GetAbsolutePath(pointsData.filePath), cacheDirectory));
+            yield return StartCoroutine(ProcessPLY(GetAbsolutePath(pointsData.file), cacheDirectory));
         }
         loaded = true;
         yield return null;
@@ -115,15 +111,18 @@ public class PointsOOC : SiteElement {
         string poutput = Path.GetFullPath(output);
         Debug.Log("converting " + pinput + " into " + poutput);
         if(File.Exists(input)){
-            string parameters = " \"" + pinput + "\" -o \"" + poutput + "\"";
+            string parameters = " \"" + pinput + "\" -o \"" + poutput + "\" -t " + this.siteData.custom.modelType;
 
             StatusText.SetText("Converting " + input + "into octree format and caching");
             
             var stopwatch = new System.Diagnostics.Stopwatch();
             stopwatch.Start();
             var proc = System.Diagnostics.Process.Start(Path.GetFullPath(GameManager.pathToPotreeExecutable), parameters);
-            proc.WaitForExit();
-            proc.CloseMainWindow();
+            while(!proc.HasExited){
+                yield return null;
+            }
+            // proc.WaitForExit();
+            // proc.CloseMainWindow();
             StatusText.Hide();
             stopwatch.Stop();
             Debug.Log("Done in " + stopwatch.Elapsed.Seconds + " seconds");

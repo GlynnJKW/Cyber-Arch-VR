@@ -534,11 +534,6 @@ public class Panorama : SiteElement
     public IEnumerator LoadImagesAsTextures(List<Image> images, List<Texture2D> textures)
     {
 
-        // for (int i = 0; i < images.Count; i++)
-        // {
-        //     Bitmap testBit = new Bitmap(images[i]);
-        // }
-
 
         int numConverterThreads = 1;
         int numThreadsPerImage = 2;

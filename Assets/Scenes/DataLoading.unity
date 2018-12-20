@@ -201,7 +201,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 105427858}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -15, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 434322181}
@@ -1739,6 +1739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sites: []
+  customOverrides:
+    elements: []
   poiPrefab: {fileID: 1922777842133926, guid: c261ceef94331e0469d7437073d981c8, type: 2}
   poiActiveMat: {fileID: 2100000, guid: 625d7f3b9aaeb594ca91091e8769af6d, type: 2}
   poiInactiveMat: {fileID: 2100000, guid: 83d8732a416d11644aba2eb7b0e90436, type: 2}
@@ -2043,6 +2045,7 @@ MonoBehaviour:
   labelPrefab: {fileID: 0}
   caveSettings:
     pathToDataJSONFile: 
+    pathToCustomOverrideFile: 
     runIn3D: 0
     loadAllDataOnStart: 1
 --- !u!4 &1178023200

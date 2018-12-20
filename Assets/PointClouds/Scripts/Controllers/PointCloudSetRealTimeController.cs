@@ -39,6 +39,8 @@ namespace Controllers {
         /// </summary>
         public uint cacheSizeInPoints = 1000000;
 
+        public uint pointCount = 0;
+
         private Camera userCam;
         public Camera userCamera { 
             get{
@@ -63,6 +65,7 @@ namespace Controllers {
         void Update() {
             if (!CheckReady()) return;
             PointRenderer.Update();
+            this.pointCount = this.GetPointCount();
         }
 
         public void Shutdown(){

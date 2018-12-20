@@ -61,7 +61,7 @@ Shader "Custom/QuadGeoScreenSizeShader"
 
 				[maxvertexcount(4)]
 				void geom(point VertexMiddle input[1], inout TriangleStream<VertexOutput> outputStream) {
-					float zfactor = input[0].position.z/input[0].position.w * 10 + 0.8;
+					float zfactor = 1;//input[0].position.z/input[0].position.w * 10 + 0.8;
 					float xsize = _PointSize / (_ScreenWidth);
 					xsize *= zfactor;
 					float ysize = _PointSize / (_ScreenHeight);

@@ -67,6 +67,12 @@ public abstract class SiteElement : MonoBehaviour
         // Set active as true
         active = true;
 
+        if(this.siteData.custom.startTransform != null){            
+            Player.instance.transform.position = this.siteData.custom.startTransform.position;
+            Player.instance.transform.rotation = Quaternion.Euler(this.siteData.custom.startTransform.eulerAngles);
+        }
+
+
         // Return the coroutine.
         return activeCoroutine;
     }
@@ -115,23 +121,15 @@ public abstract class SiteElement : MonoBehaviour
             this.siteData.custom = new CustomData();
         }
         CustomData custom = this.siteData.custom;
+        Debug.Log(custom);
+        Debug.Log(custom.audio);
+        Debug.Log(custom.audio.filepath);
+        Debug.Log(custom.modelType);
+        Debug.Log(custom.splines);
+        Debug.Log(custom.startTransform);
+        yield return null;
+        
 
-        //Merge customData string and customdata object, prioritizing previously existing object
-        if(this.siteData.customData != null){
-            CustomData c = JsonUtility.FromJson<CustomData>(this.siteData.customData);
-            if(custom.audio == null){
-                custom.audio = c.audio;
-            }
-            if(custom.modelType == "" || custom.modelType == null){
-                custom.modelType = c.modelType;
-            }
-            if(custom.splines == null){
-                custom.splines = c.splines;
-            }
-            if(custom.translation == null){
-                custom.translation = c.translation;
-            }
-        }
         //If splines object exists, use spline idle instead of default idle
         if(custom.splines != null){
             idleAnimation = new SplineIdle(custom.splines);
@@ -338,7 +336,7 @@ public class SerializableSiteElement
 public class CustomData{
     public string modelType;
     public JSONTransform[] splines;
-    public Vector3 translation;
+    public JSONTransform startTransform;
     public JSONAudio audio;
 }
 

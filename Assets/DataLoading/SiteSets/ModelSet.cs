@@ -9,13 +9,13 @@ public class ModelSet : SiteElementSet {
     protected override SiteElement AddElementComponent(GameObject elementObject, SerializableSiteElement element)
     {
         SerializableModel modelData = element as SerializableModel;
-        //Debug.Log(modelData.customData);
-        if(modelData.customData.IndexOf("ply") != -1){
+        if(modelData.custom.modelType  == "ply" || modelData.custom.modelType == "las" || modelData.custom.modelType == "xyz"){
             Debug.Log("Creating new PointsOOC");
             PointsOOC newElement = elementObject.AddComponent<PointsOOC>();
             return newElement;
         }
         else{
+            Debug.Log("Creating new Model");
             Model newElement = elementObject.AddComponent<Model>();
             return newElement;
         }

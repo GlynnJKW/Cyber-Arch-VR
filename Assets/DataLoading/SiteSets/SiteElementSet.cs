@@ -32,10 +32,11 @@ public abstract class SiteElementSet : MonoBehaviour
         foreach (SerializableSiteElement element in serializableSiteElements)
         {
 
-            GameObject newElementObj = CreateElementObject(element.name);
-            SiteElement newElement = AddElementComponent(newElementObj, element);
+            //Merge customData string and customdata object, prioritizing previously existing object
+            CustomData c = JsonUtility.FromJson<CustomData>(element.customData);
+            element.custom = c != null ? c : new CustomData();
 
-            //ADD LOCAL OVERRIDE HERE
+            //Add local overrides to json file
             if(SiteManager.instance.customOverrides != null){
                 SerializableElements customs = SiteManager.instance.customOverrides;
                 foreach(SerializableSiteElement e in customs.elements){
@@ -47,8 +48,8 @@ public abstract class SiteElementSet : MonoBehaviour
                         if(e.custom.modelType != null && e.custom.modelType != ""){
                             element.custom.modelType = e.custom.modelType;
                         }
-                        if(e.custom.translation != null){
-                            element.custom.translation = e.custom.translation;
+                        if(e.custom.startTransform != null){
+                            element.custom.startTransform = e.custom.startTransform;
                         }
                         if(e.custom.splines != null){
                             element.custom.splines = e.custom.splines;
@@ -56,6 +57,9 @@ public abstract class SiteElementSet : MonoBehaviour
                     }
                 }
             }
+
+            GameObject newElementObj = CreateElementObject(element.name);
+            SiteElement newElement = AddElementComponent(newElementObj, element);
 
             newElement.Initialize(element, parentSite);
 
