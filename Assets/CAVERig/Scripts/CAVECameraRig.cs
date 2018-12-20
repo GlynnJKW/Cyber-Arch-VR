@@ -189,8 +189,9 @@ public class CAVECameraRig : MonoBehaviour
         camera.transform.localPosition = Vector3.zero;
         camera.transform.localRotation = Quaternion.identity;
         Camera camComponent = camera.AddComponent<Camera>();
+        camComponent.targetDisplay = 6;
         containerCamera = camComponent;
-        camComponent.enabled = false;
+        // camComponent.enabled = false;
         ContainerScreen screen = camera.AddComponent<ContainerScreen>();
         screen.projectionScreens = new List<GameObject>();
 

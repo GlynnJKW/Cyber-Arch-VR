@@ -62,15 +62,18 @@ public class ContainerScreen : MonoBehaviour
                 }
             }
 
+
+            float buffer = 1.4f;
+
             //add buffer room
-            pa.x *= 1.2f;
-            pa.y *= 1.2f;
+            pa.x = transform.position.x + (pa.x - transform.position.x) * buffer;
+            pa.y = transform.position.y + (pa.y - transform.position.y) * buffer;
 
-            pb.x *= 1.2f;
-            pb.y *= 1.2f;
+            pb.x = transform.position.x + (pb.x - transform.position.x) * buffer;
+            pb.y = transform.position.y + (pb.y - transform.position.y) * buffer;
 
-            pc.x *= 1.2f;
-            pc.y *= 1.2f;
+            pc.x = transform.position.x + (pc.x - transform.position.x) * buffer;
+            pc.y = transform.position.y + (pc.y - transform.position.y) * buffer;
 
             pa = cameraComponent.transform.TransformPoint(pa);
             pb = cameraComponent.transform.TransformPoint(pb);
