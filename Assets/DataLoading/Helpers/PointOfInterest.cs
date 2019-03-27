@@ -13,9 +13,13 @@ public class PointOfInterest : MonoBehaviour
 
     public List<GameObject> poles;
 
+    public GameObject poleprefab;
+    public Material ribbonMat;
+
     // Start is called before the first frame update
     void Start()
     {
+        poles = new List<GameObject>();
         Mesh mesh = new Mesh();
         MeshFilter meshFilter = this.gameObject.AddComponent<MeshFilter>();
         
@@ -65,11 +69,11 @@ public class PointOfInterest : MonoBehaviour
         mesh.uv = uvs.ToArray();
         mesh.triangles = indices.ToArray();
         meshFilter.mesh = mesh;
-        this.gameObject.AddComponent<MeshRenderer>();
-
-        var prefab = Resources.Load<GameObject>("Prefabs/pole");
+        var meshRenderer = this.gameObject.AddComponent<MeshRenderer>();
+        meshRenderer.material = ribbonMat;
+        
         foreach(Vector3 pole in boundaries){
-            GameObject obj = Instantiate(prefab, pole, Quaternion.identity);
+            GameObject obj = Instantiate<GameObject>(poleprefab, pole, Quaternion.identity);
             obj.transform.localScale = new Vector3(1, baseHeight + tapeWidth + 0.1f, 1);
             poles.Add(obj);
         }
