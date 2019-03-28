@@ -22,6 +22,8 @@ namespace Controllers {
         /// </summary>
         public string cloudPath;
 
+        public PointCloudMetaData metaData;
+
         /// <summary>
         /// The PointSetController to use
         /// </summary>
@@ -39,7 +41,7 @@ namespace Controllers {
                     cloudPath = cloudPath + "\\";
                 }
 
-                PointCloudMetaData metaData = CloudLoader.LoadMetaData(cloudPath, false);
+                metaData = CloudLoader.LoadMetaData(cloudPath, false);
 
                 setController.UpdateBoundingBox(this, metaData.boundingBox);
 

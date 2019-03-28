@@ -12,6 +12,7 @@ public class PointOfInterest : MonoBehaviour
     public List<Vector3> boundaries;
 
     public List<GameObject> poles;
+    private GameObject miasma;
 
     public GameObject poleprefab;
     public Material ribbonMat;
@@ -19,14 +20,13 @@ public class PointOfInterest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        poles = new List<GameObject>();
+        //Create ribbon
         Mesh mesh = new Mesh();
         MeshFilter meshFilter = this.gameObject.AddComponent<MeshFilter>();
         
         List<Vector3> verts = new List<Vector3>();
         List<Vector2> uvs = new List<Vector2>();
         List<int> indices = new List<int>();
-
         for(int curr = 0; curr < boundaries.Count; ++curr){
             int next = (curr + 1) % boundaries.Count;
 
@@ -71,7 +71,40 @@ public class PointOfInterest : MonoBehaviour
         meshFilter.mesh = mesh;
         var meshRenderer = this.gameObject.AddComponent<MeshRenderer>();
         meshRenderer.material = ribbonMat;
-        
+
+
+        //Create miasma
+        miasma = new GameObject("miasma");
+        miasma.transform.parent = this.transform;
+        Mesh miasmaMesh = new Mesh();
+        MeshFilter miasmaFilter = miasma.AddComponent<MeshFilter>();
+
+        List<Vector3> miasmaVerts = new List<Vector3>();
+        List<int> miasmaIndices = new List<int>();
+        for(int curr = 0; curr < boundaries.Count; ++curr){
+            Vector3 bot = boundaries[curr];
+            Vector3 top = boundaries[curr];
+            top.y += 1000;
+            miasmaVerts.Add(bot);
+            miasmaVerts.Add(top);
+
+            int currInd = curr * 2;
+            int nextInd = ((curr + 1) % boundaries.Count) * 2;
+
+            // tl, bl, br,   br, tr, tl
+            int[] currRect = new int[]{currInd+1, currInd, nextInd, nextInd, nextInd+1, currInd+1};
+            miasmaIndices.AddRange(currRect);
+        }
+        miasmaMesh.vertices = miasmaVerts.ToArray();
+        miasmaMesh.triangles = miasmaIndices.ToArray();
+        miasmaFilter.mesh = miasmaMesh;
+        var miasmaRenderer = miasma.AddComponent<MeshRenderer>();
+        miasmaRenderer.material = Resources.Load<Material>("Materials/miasma");
+
+
+
+        //Create poles
+        poles = new List<GameObject>();
         foreach(Vector3 pole in boundaries){
             GameObject obj = Instantiate<GameObject>(poleprefab, pole, Quaternion.identity);
             obj.transform.localScale = new Vector3(1, baseHeight + tapeWidth + 0.1f, 1);
@@ -89,5 +122,6 @@ public class PointOfInterest : MonoBehaviour
         foreach(var pole in poles){
             Destroy(pole);
         }
+        Destroy(miasma);
     }
 }

@@ -41,6 +41,8 @@ public abstract class SiteElementSet : MonoBehaviour
                 SerializableElements customs = SiteManager.instance.customOverrides;
                 foreach(SerializableSiteElement e in customs.elements){
                     //If names are equal, override custom properties
+                    Debug.Log(e.name);
+                    Debug.Log(element.name);
                     if(e.name == element.name){
                         if(e.custom.audio != null){
                             element.custom.audio = e.custom.audio;
@@ -48,11 +50,17 @@ public abstract class SiteElementSet : MonoBehaviour
                         if(e.custom.modelType != null && e.custom.modelType != ""){
                             element.custom.modelType = e.custom.modelType;
                         }
-                        if(e.custom.startTransform != null){
+                        if(e.custom.startTransform.position != Vector3.zero ||
+                            e.custom.startTransform.eulerAngles != Vector3.zero
+                        ){
+                            Debug.Log("override position: " + e.custom.startTransform.position);
                             element.custom.startTransform = e.custom.startTransform;
                         }
                         if(e.custom.splines != null){
                             element.custom.splines = e.custom.splines;
+                        }
+                        if(e.custom.shapefilePath != null && e.custom.shapefilePath != ""){
+                            element.custom.shapefilePath = e.custom.shapefilePath;
                         }
                     }
                 }

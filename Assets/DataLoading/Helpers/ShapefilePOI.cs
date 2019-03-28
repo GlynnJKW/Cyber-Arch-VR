@@ -15,7 +15,7 @@ public class ShapefilePOI
         objects = new List<GameObject>();
         shapefile = new Shapefile(filepath);
         GameObject prefab = Resources.Load<GameObject>("Prefabs/pole");
-
+        Material mat = Resources.Load<Material>("Materials/ribbon");
 
         foreach (Shape shape in shapefile){
             if(shape.Type == ShapeType.Polygon){
@@ -28,7 +28,7 @@ public class ShapefilePOI
                     PointOfInterest poi = obj.AddComponent<PointOfInterest>();
                     poi.boundaries = new List<Vector3>();
                     poi.poleprefab = prefab;
-
+                    poi.ribbonMat = mat;
 
                     foreach(PointD p in part){
                         poi.boundaries.Add(new Vector3((float)(p.X + transform.x), transform.y, (float)(p.Y + transform.z)));
