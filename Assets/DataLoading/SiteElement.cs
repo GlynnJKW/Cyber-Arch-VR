@@ -21,6 +21,8 @@ public abstract class SiteElement : MonoBehaviour
 
     public ElementUI elementUI;
 
+    protected ShapefilePOI spoi;
+
     // The serializable data (from JSON) associated with this site element.
     protected SerializableSiteElement siteData;
 
@@ -126,7 +128,8 @@ public abstract class SiteElement : MonoBehaviour
         Debug.Log(custom.audio.filepath);
         Debug.Log(custom.modelType);
         Debug.Log(custom.splines);
-        Debug.Log(custom.startTransform);
+        Debug.Log(custom.startTransform.position);
+        Debug.Log(custom.shapefilePath);
         yield return null;
         
 
@@ -148,6 +151,10 @@ public abstract class SiteElement : MonoBehaviour
             source.loop = custom.audio.loop;
             source.playOnAwake = false;
             audiowww.Dispose();
+        }
+        if(custom.shapefilePath != null && File.Exists(custom.shapefilePath)){
+            spoi = new ShapefilePOI(custom.shapefilePath);
+            spoi.Disable();
         }
     }
 
@@ -268,6 +275,9 @@ public abstract class SiteElement : MonoBehaviour
             Debug.Log("playing audio");
             audiosource.Play();
         }
+        if(spoi != null){
+            spoi.Enable();
+        }
         yield return null;
     }
 
@@ -276,6 +286,9 @@ public abstract class SiteElement : MonoBehaviour
         if(audiosource != null){
             Debug.Log("stopping audio");
             audiosource.Stop();
+        }
+        if(spoi != null){
+            spoi.Disable();
         }
     }
     
@@ -338,6 +351,7 @@ public class CustomData{
     public JSONTransform[] splines;
     public JSONTransform startTransform;
     public JSONAudio audio;
+    public string shapefilePath;
 }
 
 [System.Serializable]

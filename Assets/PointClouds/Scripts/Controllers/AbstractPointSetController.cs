@@ -26,7 +26,7 @@ namespace Controllers {
 
         //For origin-moving:
         private bool hasMoved = false;
-        private BoundingBox overallBoundingBox = new BoundingBox(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity,
+        public BoundingBox overallBoundingBox = new BoundingBox(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity,
                                                                     double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity);
         private Dictionary<MonoBehaviour, BoundingBox> boundingBoxes = new Dictionary<MonoBehaviour, BoundingBox>();
         private ManualResetEvent waiterForBoundingBoxUpdate = new ManualResetEvent(false);

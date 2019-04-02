@@ -12,7 +12,6 @@ public class SplineIdle : Idle{
     public SplineIdle(JSONTransform[] jsonSpline){
         timeElapsed = 0;
         spline = new Spline();
-        Debug.Log(jsonSpline);
         for(int i = 0; i < jsonSpline.Length; ++i){
             JSONTransform element = jsonSpline[i];
             spline.AddPoint(

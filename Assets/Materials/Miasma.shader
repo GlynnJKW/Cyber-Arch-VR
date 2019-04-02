@@ -94,7 +94,7 @@
 				float st = (sin(_Time.y * _OscillationSpeed) / 2 + 0.5) * (_OscillationAmount)  + (1 - _OscillationAmount);
 				col.a *= st;
 
-				col.a *= max(0, min(1, abs(i.dottednormal)));
+				//col.a *= max(0, min(1, abs(i.dottednormal)));
 
 
 				float2 offset = float2(_SinTime.x * _OscillationSpeed / 10, _CosTime.x * _OscillationSpeed / 10);

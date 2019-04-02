@@ -1,4 +1,10 @@
 {
     "elements": [
+        {
+            "name": "Tel Dor 2017 Aerial Survey",
+            "custom": {
+                "shapefilePath": "./SiteData/Tel_Dor_POI_UTM36N/Tel_Dor_Areas.shp"
+            }
+        }
     ]
 }

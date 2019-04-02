@@ -6,6 +6,7 @@ using UnityEngine;
 using Controllers;
 using ObjectCreation;
 using CloudData;
+using Loading;
 
 public class PointsOOC : SiteElement {
 
@@ -58,6 +59,22 @@ public class PointsOOC : SiteElement {
         set.userCamera = CAVECameraRig.frustumCamera;
 
         yield return null;
+
+        if(this.spoi != null){
+            try {
+                string cloudPath = GetCacheDirectory(pointsData.file);
+                if (!cloudPath.EndsWith("\\")) {
+                    cloudPath = cloudPath + "\\";
+                }
+
+                PointCloudMetaData md = CloudLoader.LoadMetaData(cloudPath, false);
+                this.spoi.Delete();
+                this.spoi = new ShapefilePOI(this.siteData.custom.shapefilePath, -md.boundingBox.Center().ToFloatVector());
+
+            } catch (Exception ex) {
+                Debug.LogError(ex);
+            }
+        }
     }
 
     protected override IEnumerator DeactivateCoroutine()
@@ -69,6 +86,7 @@ public class PointsOOC : SiteElement {
         Destroy(this.gameObject.GetComponent<GeoTriMeshConfiguration>());
         Destroy(this.gameObject.GetComponent<PointCloudSetRealTimeController>());
         Destroy(this.gameObject.GetComponent<DynamicLoaderController>());
+        this.spoi.Delete();
         yield return null;
     }
 
