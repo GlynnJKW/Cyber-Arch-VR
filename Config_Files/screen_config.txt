@@ -5,19 +5,9 @@
 <LOCAL host="ucmerced-head.local" >
 
    <ScreenConfig>
-      <!-- left stack -->
-      <Screen height="680" h="15" width="1208.7" p="0.0"   originX="-663"  comment="S_A" originY="1821.9"  r="90.0" name="0" originZ="-612" />
-      <Screen height="680" h="15" width="1208.7" p="0.0"   originX="-663"  comment="S_A" originY="1821.9"  r="90.0" name="1" originZ="612" />
-      
-      <!-- center stack -->
-      
-      <Screen height="680" h="0" width="1208.7" p="0.0"   originX="0"  comment="S_A" originY="1947.6"  r="-90.0" name="3" originZ="-612" />
-      <Screen height="680" h="0" width="1208.7" p="0.0"   originX="0"  comment="S_A" originY="1947.6"  r="-90.0" name="2" originZ="612" />
 
-      <!-- right stack -->
-      <Screen height="680" h="-15" width="1208.7" p="0.0"   originX="663.1"  comment="S_A" originY="1821.9"  r="-90.0" name="4" originZ="-612" />
-      <Screen height="680" h="-15" width="1208.7" p="0.0"   originX="663.1"  comment="S_A" originY="1821.9"  r="-90.0" name="5" originZ="612" />
-    
+      <Screen height="3840" h="0" width="2160" p="0.0"   originX="0"  comment="S_A" originY="2000"  r="90.0" name="3" originZ="250" />
+
       
    </ScreenConfig>
 

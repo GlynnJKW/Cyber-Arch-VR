@@ -295,7 +295,7 @@ public class CAVECameraRig : MonoBehaviour
                     newRightCam.rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
                 }
 
-
+                newPlane.transform.localScale = new Vector3(float.Parse(screens[i].width), float.Parse(screens[i].height), 1.0f);
             }
 
             // If the screen rotation is 180 (Untested).
@@ -314,7 +314,7 @@ public class CAVECameraRig : MonoBehaviour
                     newRightCam.rect = new Rect(0.0f, 0.0f, 1.0f, 1.0f);
 
                 }
-
+                newPlane.transform.localScale = new Vector3(float.Parse(screens[i].width), float.Parse(screens[i].height), 1.0f);
             }
 
             // Set the parents of each camera.
